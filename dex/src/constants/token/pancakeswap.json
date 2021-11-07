@@ -42,6 +42,14 @@
         "logoURI": "/images/coins/AQUA.png"
       },
       {
+        "name": "Intergalactic Token",
+        "symbol": "IGC",
+        "address": "0xEfb7f4Fd7eE95D856Cd96bf952c562D372B40482",
+        "chainId": 56,
+        "decimals": 18,
+        "logoURI": "/images/coins/IGC.png"
+      },
+      {
         "name": "BUSD Token",
         "symbol": "BUSD",
         "address": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
