@@ -46,7 +46,7 @@
         "symbol": "IGC",
         "address": "0xEfb7f4Fd7eE95D856Cd96bf952c562D372B40482",
         "chainId": 56,
-        "decimals": 18,
+        "decimals": 9,
         "logoURI": "/images/coins/IGC.png"
       },
       {
