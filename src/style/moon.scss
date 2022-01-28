@@ -1,0 +1,38 @@
+@import "compass/css3";
+
+  body {
+    background: radial-gradient(200% 100% at bottom center, #9700a9, #26004b, #27006b, #200085);
+    background: radial-gradient(220% 105% at center, #9700a9 10%, #27006b 40%, #26004b 65%, #210085);
+    background-attachment: fixed;
+    overflow: hidden;
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: perspective(200px) rotateZ(10deg) rotateX(-60deg) rotateY(0);
+    }
+    100% {
+      transform: perspective(400px) rotateZ(-20deg) rotateX(-40deg) rotateY(-360deg);
+    }
+  }
+  .stars {
+    transform: perspective(250px);
+    transform-style: preserve-3d;
+    position: absolute;
+    bottom: -28%;
+    perspective-origin: -50% 600%;
+    left: 18%;
+    animation: rotate 45s infinite linear;
+  }
+  
+  .star {
+    width: 2px;
+    height: 1px;
+    background: #F7F7B6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0 -600px;
+    transform: translate3d(0, 0, -600px);
+    backface-visibility: hidden;
+  }
