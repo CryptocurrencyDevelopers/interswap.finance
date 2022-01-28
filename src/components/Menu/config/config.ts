@@ -81,37 +81,57 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
     hideSubNav: true,
     items: [
       {
-        label: t('Info'),
+        label: t('Info (Pancakeswap)'),
         href: '/info',
       },
-      {
-        label: t('IFO'),
-        href: '/ifo',
-      },
-      {
-        label: t('Voting'),
-        href: '/voting',
-      },
-      {
-        type: DropdownMenuItemType.DIVIDER,
-      },
-      {
-        label: t('Leaderboard'),
-        href: '/teams',
-      },
+      // {
+      //   label: t('IFO'),
+      //   href: '/ifo',
+      // },
+      // {
+      //   label: t('Voting'),
+      //   href: '/voting',
+      // },
       {
         type: DropdownMenuItemType.DIVIDER,
       },
       {
-        label: t('Blog'),
-        href: 'https://medium.com/pancakeswap',
+        label: t('Webnero'),
+        href: 'https://webnero.electronero.org',
+        type: DropdownMenuItemType.EXTERNAL_LINK,
+      },
+      // {
+      //   label: t('Leaderboard'),
+      //   href: '/teams',
+      // },
+      {
+        type: DropdownMenuItemType.DIVIDER,
+      },
+      {
+        label: t('Electronero'),
+        href: 'https://electronero.org',
         type: DropdownMenuItemType.EXTERNAL_LINK,
       },
       {
-        label: t('Docs'),
-        href: 'https://docs.pancakeswap.finance',
+        label: t('Pulse'),
+        href: 'https://electroneropulse.org',
         type: DropdownMenuItemType.EXTERNAL_LINK,
       },
+      {
+        label: t('Litenero'),
+        href: 'https://litenero.org',
+        type: DropdownMenuItemType.EXTERNAL_LINK,
+      },
+      {
+        label: t('Goldnero'),
+        href: 'https://goldnero.org',
+        type: DropdownMenuItemType.EXTERNAL_LINK,
+      },
+      // {
+      //   label: t('Docs'),
+      //   href: 'https://docs.interswap.finance',
+      //   type: DropdownMenuItemType.EXTERNAL_LINK,
+      // },
     ],
   },
 ]

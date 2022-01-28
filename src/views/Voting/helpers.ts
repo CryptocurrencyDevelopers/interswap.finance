@@ -39,7 +39,7 @@ export const generateMetaData = () => {
   return {
     plugins: {},
     network: 56,
-    strategies: [{ name: 'cake', params: { symbol: 'CAKE', address: tokens.cake.address, decimals: 18 } }],
+    strategies: [{ name: 'electronero smart chain', params: { symbol: 'XSC', address: tokens.xsc.address, decimals: 18 } }],
   }
 }
 

@@ -28,10 +28,13 @@ interface FarmCardActionsProps {
   account?: string
   addLiquidityUrl?: string
   cakePrice?: BigNumber
+  xscPrice?: BigNumber
+  crystalPrice?: BigNumber
+  bnbBUSDPrice?: BigNumber
   lpLabel?: string
 }
 
-const CardActions: React.FC<FarmCardActionsProps> = ({ farm, account, addLiquidityUrl, cakePrice, lpLabel }) => {
+const CardActions: React.FC<FarmCardActionsProps> = ({ farm, account, addLiquidityUrl, cakePrice, crystalPrice, xscPrice, bnbBUSDPrice, lpLabel }) => {
   const { t } = useTranslation()
   const { toastSuccess, toastError } = useToast()
   const [requestedApproval, setRequestedApproval] = useState(false)
@@ -83,6 +86,9 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, account, addLiquidi
         apr={farm.apr}
         lpLabel={lpLabel}
         cakePrice={cakePrice}
+        xscPrice={xscPrice}
+        crystalPrice={crystalPrice}
+        bnbBUSDPrice={bnbBUSDPrice}
         addLiquidityUrl={addLiquidityUrl}
       />
     ) : (
@@ -96,7 +102,7 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, account, addLiquidi
     <Action>
       <Flex>
         <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="4px">
-          CAKE
+          XSC
         </Text>
         <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
           {t('Earned')}

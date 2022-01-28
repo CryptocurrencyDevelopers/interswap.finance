@@ -41,10 +41,13 @@ interface FarmCardProps {
   displayApr: string
   removed: boolean
   cakePrice?: BigNumber
+  xscPrice?: BigNumber
+  crystalPrice?: BigNumber
+  bnbBUSDPrice?: BigNumber
   account?: string
 }
 
-const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, cakePrice, account }) => {
+const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, cakePrice, xscPrice, crystalPrice, bnbBUSDPrice, account }) => {
   const { t } = useTranslation()
 
   const [showExpandableSection, setShowExpandableSection] = useState(false)
@@ -55,7 +58,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, cakePric
       : ''
 
   const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('PANCAKE', '')
-  const earnLabel = farm.dual ? farm.dual.earnLabel : t('CAKE + Fees')
+  const earnLabel = farm.dual ? farm.dual.earnLabel : t('XSC + Fees')
 
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
     quoteTokenAddress: farm.quoteToken.address,
@@ -63,7 +66,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, cakePric
   })
   const addLiquidityUrl = `${BASE_ADD_LIQUIDITY_URL}/${liquidityUrlPathParts}`
   const lpAddress = getAddress(farm.lpAddresses)
-  const isPromotedFarm = farm.token.symbol === 'CAKE'
+  const isPromotedFarm = farm.token.symbol === 'XSC'
 
   return (
     <StyledCard isActive={isPromotedFarm}>
@@ -88,6 +91,9 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, cakePric
                   lpLabel={lpLabel}
                   addLiquidityUrl={addLiquidityUrl}
                   cakePrice={cakePrice}
+                  xscPrice={xscPrice}
+                  crystalPrice={crystalPrice}
+                  bnbBUSDPrice={bnbBUSDPrice}
                   apr={farm.apr}
                   displayApr={displayApr}
                 />
@@ -106,6 +112,9 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, cakePric
           lpLabel={lpLabel}
           account={account}
           cakePrice={cakePrice}
+          xscPrice={xscPrice}
+          crystalPrice={crystalPrice}
+          bnbBUSDPrice={bnbBUSDPrice}
           addLiquidityUrl={addLiquidityUrl}
         />
       </FarmCardInnerContainer>

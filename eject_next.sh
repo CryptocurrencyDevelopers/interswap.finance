@@ -1,0 +1,1 @@
+cd node_modules && cp -r -f ../* front_end && mv front_end .. && cd ../front_end && yarn 

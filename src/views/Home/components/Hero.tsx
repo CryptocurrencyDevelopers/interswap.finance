@@ -54,6 +54,18 @@ const BunnyWrapper = styled.div`
   animation: ${flyingAnim} 3.5s ease-in-out infinite;
 `
 
+const BabyWrapper = styled.div`
+.pinkish {
+  color:#e710d7;
+  font-color:#e710d7;
+}
+.fontish { 
+  border-style: double;
+  border-width: medium; 
+  border-color:#fff;
+}
+`
+
 const StarsWrapper = styled.div`
   position: absolute;
   top: 0;
@@ -113,14 +125,16 @@ const Hero = () => {
           <Heading scale="xxl" color="secondary" mb="24px">
             {t('The moon is just the first stop')}
           </Heading>
-          <Heading scale="md" mb="24px">
-            {t('Trade, earn, and win crypto on the most popular decentralized platform in the galaxy.')}
+          <BabyWrapper>
+          <Heading className="pinkish" scale="md" mb="24px">
+            {t('Intergalactic Space Racing game sets the gateway into the world of metaverse space gaming!')}
             {/* <button type="button" onClick={() => {
                 throw new Error("Sentry Frontend Error");
             }}>
                 Throw error
             </button> */}
           </Heading>
+          </BabyWrapper>
           <Flex>
             {!account && <ConnectWalletButton mr="8px" />}
             <NextLinkFromReactRouter to="/swap">
@@ -139,7 +153,7 @@ const Hero = () => {
             <picture>
               <source type="image/webp" srcSet={getSrcSet(imagePath, imageSrc, '.webp')} />
               <source type="image/png" srcSet={getSrcSet(imagePath, imageSrc)} />
-              <img src={`${imagePath}${imageSrc}.png`} alt={t('Lunar bunny')} />
+              <img src={`${imagePath}${imageSrc}.png`} alt={t('Intergalactic')} />
             </picture>
           </BunnyWrapper>
           <StarsWrapper>

@@ -44,7 +44,7 @@ const Grid = styled.div`
   }
 `
 
-const emissionsPerBlock = 14.25
+const emissionsPerBlock = 30.00
 
 const CakeDataRow = () => {
   const { t } = useTranslation()
@@ -64,7 +64,7 @@ const CakeDataRow = () => {
 
   useSlowRefreshEffect(() => {
     const fetchTokenData = async () => {
-      const totalSupplyCall = { address: tokens.cake.address, name: 'totalSupply' }
+      const totalSupplyCall = { address: tokens.xsc.address, name: 'totalSupply' }
       const burnedTokenCall = {
         address: tokens.cake.address,
         name: 'balanceOf',
