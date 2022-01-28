@@ -61,10 +61,7 @@ export interface DeserializedFarm extends DeserializedFarmConfig {
   userData?: DeserializedFarmUserData
 }
 
-export enum VaultKey {
-  CakeVault = 'cakeVault',
-  IfoPool = 'ifoPool',
-}
+
 
 interface CorePoolProps {
   startBlock?: number

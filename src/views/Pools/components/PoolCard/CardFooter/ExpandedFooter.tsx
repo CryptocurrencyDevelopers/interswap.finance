@@ -52,24 +52,14 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({ pool, account }) => {
     stakingLimit,
     contractAddress,
     sousId,
-    vaultKey,
   } = pool
 
-  const {
-    totalCakeInVault,
-    fees: { performanceFee },
-  } = useVaultPoolByKey(vaultKey)
 
-  const vaultPools = useVaultPools()
-  const cakeInVaults = Object.values(vaultPools).reduce((total, vault) => {
-    return total.plus(vault.totalCakeInVault)
-  }, BIG_ZERO)
+
 
   const tokenAddress = earningToken.address || ''
   const poolContractAddress = getAddress(contractAddress)
-  const cakeVaultContractAddress = getVaultPoolAddress(vaultKey)
   const isMetaMaskInScope = !!window.ethereum?.isMetaMask
-  const isManualCakePool = sousId === 0
 
   const { shouldShowBlockCountdown, blocksUntilStart, blocksRemaining, hasPoolStarted, blocksToDisplay } =
     getPoolBlockInfo(pool, currentBlock)
@@ -80,13 +70,6 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({ pool, account }) => {
   )
 
   const getTotalStakedBalance = () => {
-    if (vaultKey) {
-      return getBalanceNumber(totalCakeInVault, stakingToken.decimals)
-    }
-    if (isManualCakePool) {
-      const manualCakeTotalMinusAutoVault = new BigNumber(totalStaked).minus(cakeInVaults)
-      return getBalanceNumber(manualCakeTotalMinusAutoVault, stakingToken.decimals)
-    }
     return getBalanceNumber(totalStaked, stakingToken.decimals)
   }
 
@@ -140,23 +123,13 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({ pool, account }) => {
           )}
         </Flex>
       )}
-      {vaultKey && (
         <Flex mb="2px" justifyContent="space-between" alignItems="center">
           {tooltipVisible && tooltip}
           <TooltipText ref={targetRef} small>
-            {t('Performance Fee')}
+            {/* {t('Performance Fee')} */}
           </TooltipText>
-          <Flex alignItems="center">
-            {performanceFee ? (
-              <Text ml="4px" small>
-                {performanceFee / 100}%
-              </Text>
-            ) : (
-              <Skeleton width="90px" height="21px" />
-            )}
-          </Flex>
         </Flex>
-      )}
+     
       <Flex mb="2px" justifyContent="flex-end">
         <LinkExternal href={`/info/token/${earningToken.address}`} bold={false} small>
           {t('See Token Info')}
@@ -170,7 +143,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({ pool, account }) => {
       {poolContractAddress && (
         <Flex mb="2px" justifyContent="flex-end">
           <LinkExternal
-            href={`${BASE_BSC_SCAN_URL}/address/${vaultKey ? cakeVaultContractAddress : poolContractAddress}`}
+            href={`${BASE_BSC_SCAN_URL}/address/${poolContractAddress}`}
             bold={false}
             small
           >

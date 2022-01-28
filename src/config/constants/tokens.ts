@@ -29,14 +29,6 @@ export const mainnetTokens = defineTokens({
     'Electronero Smart Chain BEP20 Token',
     'https://electronero.org/',
   ),
-  cake: new Token(
-    MAINNET,
-    '0x7155aFF27df20F9B0ecF8406A5A60c30043894Ec',
-    18,
-    'XSC',
-    'Electronero Smart Chain BEP20 Token',
-    'https://electronero.org/',
-  ),
   cake_og: new Token(
     MAINNET,
     '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
@@ -44,6 +36,14 @@ export const mainnetTokens = defineTokens({
     'CAKE',
     'PancakeSwap Token',
     'https://pancakeswap.finance/',
+  ),
+  cake: new Token(
+    MAINNET,
+    '0x4ca6B6b8F10EB17DbD1f8c3F313Eca2F779C6e0B',
+    18,
+    'CRYSTAL',
+    'Crystaleum CRYSTAL Token',
+    'https://crystaleum.org/',
   ),
   crystal: new Token(
     MAINNET,

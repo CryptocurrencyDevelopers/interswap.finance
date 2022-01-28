@@ -15,7 +15,7 @@ import {
   useFetchUserPools,
   useFetchCakeVault,
   useFetchIfoPool,
-  useVaultPools,
+  // useVaultPools,
 } from 'state/pools/hooks'
 import { latinise } from 'utils/latinise'
 import FlexLayout from 'components/Layout/Flex'
@@ -98,10 +98,10 @@ const Pools: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [sortOption, setSortOption] = useState('hot')
   const chosenPoolsLength = useRef(0)
-  const vaultPools = useVaultPools()
-  const cakeInVaults = Object.values(vaultPools).reduce((total, vault) => {
-    return total.plus(vault.totalCakeInVault)
-  }, BIG_ZERO)
+  // const vaultPools = useVaultPools()
+  // const cakeInVaults = Object.values(vaultPools).reduce((total, vault) => {
+  //   return total.plus(vault.totalCakeInVault)
+  // }, BIG_ZERO)
 
   const pools = usePoolsWithVault()
 
@@ -110,22 +110,22 @@ const Pools: React.FC = () => {
   const stakedOnlyFinishedPools = useMemo(
     () =>
       finishedPools.filter((pool) => {
-        if (pool.vaultKey) {
-          return vaultPools[pool.vaultKey].userData.userShares && vaultPools[pool.vaultKey].userData.userShares.gt(0)
-        }
+        // if (pool.vaultKey) {
+        //   return vaultPools[pool.vaultKey].userData.userShares && vaultPools[pool.vaultKey].userData.userShares.gt(0)
+        // }
         return pool.userData && new BigNumber(pool.userData.stakedBalance).isGreaterThan(0)
       }),
-    [finishedPools, vaultPools],
+    [finishedPools],
   )
   const stakedOnlyOpenPools = useMemo(
     () =>
       openPools.filter((pool) => {
-        if (pool.vaultKey) {
-          return vaultPools[pool.vaultKey].userData.userShares && vaultPools[pool.vaultKey].userData.userShares.gt(0)
-        }
+        // if (pool.vaultKey) {
+        //   return vaultPools[pool.vaultKey].userData.userShares && vaultPools[pool.vaultKey].userData.userShares.gt(0)
+        // }
         return pool.userData && new BigNumber(pool.userData.stakedBalance).isGreaterThan(0)
       }),
-    [openPools, vaultPools],
+    [openPools],
   )
   const hasStakeInFinishedPools = stakedOnlyFinishedPools.length > 0
 
@@ -167,15 +167,7 @@ const Pools: React.FC = () => {
             if (!pool.userData || !pool.earningTokenPrice) {
               return 0
             }
-            return pool.vaultKey
-              ? getCakeVaultEarnings(
-                  account,
-                  vaultPools[pool.vaultKey].userData.cakeAtLastUserAction,
-                  vaultPools[pool.vaultKey].userData.userShares,
-                  vaultPools[pool.vaultKey].pricePerFullShare,
-                  pool.earningTokenPrice,
-                ).autoUsdToDisplay
-              : pool.userData.pendingReward.times(pool.earningTokenPrice).toNumber()
+            return pool.userData.pendingReward.times(pool.earningTokenPrice).toNumber()
           },
           'desc',
         )
@@ -184,22 +176,14 @@ const Pools: React.FC = () => {
           poolsToSort,
           (pool: DeserializedPool) => {
             let totalStaked = Number.NaN
-            if (pool.vaultKey) {
-              if (pool.stakingTokenPrice && vaultPools[pool.vaultKey].totalCakeInVault.isFinite()) {
-                totalStaked =
-                  +formatUnits(
-                    EthersBigNumber.from(vaultPools[pool.vaultKey].totalCakeInVault.toString()),
-                    pool.stakingToken.decimals,
-                  ) * pool.stakingTokenPrice
-              }
-            } else if (pool.sousId === 0) {
-              if (pool.totalStaked?.isFinite() && pool.stakingTokenPrice && cakeInVaults.isFinite()) {
-                const manualCakeTotalMinusAutoVault = EthersBigNumber.from(pool.totalStaked.toString()).sub(
-                  cakeInVaults.toString(),
-                )
-                totalStaked =
-                  +formatUnits(manualCakeTotalMinusAutoVault, pool.stakingToken.decimals) * pool.stakingTokenPrice
-              }
+            if (pool.sousId === 1111111) {
+              // if (pool.totalStaked?.isFinite() && pool.stakingTokenPrice && cakeInVaults.isFinite()) {
+              //   const manualCakeTotalMinusAutoVault = EthersBigNumber.from(pool.totalStaked.toString()).sub(
+              //     cakeInVaults.toString(),
+              //   )
+              //   totalStaked =
+              //     +formatUnits(manualCakeTotalMinusAutoVault, pool.stakingToken.decimals) * pool.stakingTokenPrice
+              // }
             } else if (pool.totalStaked?.isFinite() && pool.stakingTokenPrice) {
               totalStaked =
                 +formatUnits(EthersBigNumber.from(pool.totalStaked.toString()), pool.stakingToken.decimals) *
@@ -233,10 +217,7 @@ const Pools: React.FC = () => {
 
   const cardLayout = (
     <CardLayout>
-      {chosenPools.map((pool) =>
-        pool.vaultKey ? (
-          <CakeVaultCard key={pool.vaultKey} pool={pool} showStakedOnly={stakedOnly} />
-        ) : (
+      {chosenPools.map((pool) =>(
           <PoolCard key={pool.sousId} pool={pool} account={account} />
         ),
       )}
@@ -261,7 +242,7 @@ const Pools: React.FC = () => {
             </Heading>
           </Flex>
           <Flex flex="1" height="fit-content" justifyContent="center" alignItems="center" mt={['24px', null, '0']}>
-            <HelpButton />
+            {/* <HelpButton /> */}
             <BountyCard />
           </Flex>
         </Flex>

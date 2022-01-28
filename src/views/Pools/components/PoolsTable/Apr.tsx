@@ -7,7 +7,7 @@ import { DeserializedPool } from 'state/types'
 import { useTranslation } from 'contexts/Localization'
 import BigNumber from 'bignumber.js'
 import { BIG_ZERO } from 'utils/bigNumber'
-import { vaultPoolConfig } from 'config/constants/pools'
+// import { vaultPoolConfig } from 'config/constants/pools'
 
 const AprLabelContainer = styled(Flex)`
   &:hover {
@@ -50,7 +50,7 @@ const Apr: React.FC<AprProps> = ({ pool, showIcon, stakedBalance, performanceFee
       linkLabel={t('Get %symbol%', { symbol: stakingToken.symbol })}
       linkHref={apyModalLink}
       earningTokenSymbol={earningToken.symbol}
-      autoCompoundFrequency={vaultPoolConfig[vaultKey]?.autoCompoundFrequency ?? 0}
+      // autoCompoundFrequency={vaultPoolConfig[vaultKey]?.autoCompoundFrequency ?? 0}
       performanceFee={performanceFee}
     />,
   )

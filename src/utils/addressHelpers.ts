@@ -11,6 +11,9 @@ export const getAddress = (address: Address): string => {
 export const getMasterChefAddress = () => {
   return getAddress(addresses.masterChef)
 }
+export const getGemologistAddress = () => {
+  return getAddress(addresses.gemologist)
+}
 export const getMulticallAddress = () => {
   return getAddress(addresses.multiCall)
 }

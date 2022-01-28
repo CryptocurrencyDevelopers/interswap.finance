@@ -11,10 +11,12 @@ import {
   VaultFees,
   VaultUser,
 } from 'state/types'
-import cakeAbi from 'config/abi/cake.json'
+import cakeAbi from 'config/abi/crystal.json' 
+import xscAbi from 'config/abi/cake.json' 
 import tokens from 'config/constants/tokens'
-import masterChef from 'config/abi/masterchef.json'
-import { getAddress, getMasterChefAddress } from 'utils/addressHelpers'
+import masterChef from 'config/abi/gemologist.json'
+import xscMasterChef from 'config/abi/masterchef.json'
+import { getAddress, getMasterChefAddress, getGemologistAddress } from 'utils/addressHelpers'
 import { getPoolApr } from 'utils/apr'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { getCakeContract } from 'utils/contractHelpers'
@@ -65,7 +67,7 @@ const initialState: PoolsState = {
 }
 
 // Thunks
-const cakePool = poolsConfig.find((pool) => pool.sousId === 0)
+const cakePool = poolsConfig.find((pool) => pool.sousId === 1)
 const cakePoolAddress = getAddress(cakePool.contractAddress)
 const cakeContract = getCakeContract()
 export const fetchCakePoolPublicDataAsync = () => async (dispatch, getState) => {
@@ -109,7 +111,7 @@ export const fetchCakePoolUserDataAsync = (account: string) => async (dispatch) 
   const cakeContractCalls = [allowanceCall, balanceOfCall]
   const [[allowance], [stakingTokenBalance]] = await multicallv2(cakeAbi, cakeContractCalls)
 
-  const masterChefCalls = ['pendingCake', 'userInfo'].map((method) => ({
+  const masterChefCalls = ['pendingCrystal', 'userInfo'].map((method) => ({
     address: getMasterChefAddress(),
     name: method,
     params: ['0', account],

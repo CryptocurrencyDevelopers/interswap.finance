@@ -45,26 +45,27 @@ const BountyModal: React.FC<BountyModalProps> = ({ onDismiss, TooltipComponent }
   const { toastError, toastSuccess } = useToast()
   const cakeVaultContract = useCakeVaultContract()
   const [pendingTx, setPendingTx] = useState(false)
-  const {
-    estimatedCakeBountyReward,
-    totalPendingCakeHarvest,
-    fees: { callFee },
-  } = useCakeVault()
+  // const {
+  //   // estimatedCakeBountyReward,
+  //   // totalPendingCakeHarvest,
+  //   // fees: { callFee },
+  // } = useCakeVault()
   const { callWithGasPrice } = useCallWithGasPrice()
   const cakePriceBusd = usePriceCakeBusd()
-  const callFeeAsDecimal = callFee / 100
-  const totalYieldToDisplay = getBalanceNumber(totalPendingCakeHarvest, 18)
+  // const callFeeAsDecimal = 100 / 100
+  // const estimatedCakeBountyReward = 100;
+  // const totalYieldToDisplay = getBalanceNumber(1000000000, 18)
 
-  const estimatedDollarBountyReward = useMemo(() => {
-    return new BigNumber(estimatedCakeBountyReward).multipliedBy(cakePriceBusd)
-  }, [cakePriceBusd, estimatedCakeBountyReward])
+  // const estimatedDollarBountyReward = useMemo(() => {
+  //   return new BigNumber(estimatedCakeBountyReward).multipliedBy(cakePriceBusd)
+  // }, [cakePriceBusd, estimatedCakeBountyReward])
 
-  const hasFetchedDollarBounty = estimatedDollarBountyReward.gte(0)
-  const hasFetchedCakeBounty = estimatedCakeBountyReward ? estimatedCakeBountyReward.gte(0) : false
-  const dollarBountyToDisplay = hasFetchedDollarBounty ? getBalanceNumber(estimatedDollarBountyReward, 18) : 0
-  const cakeBountyToDisplay = hasFetchedCakeBounty ? getBalanceNumber(estimatedCakeBountyReward, 18) : 0
+  // const hasFetchedDollarBounty = false
+  // const hasFetchedCakeBounty = false
+  // const dollarBountyToDisplay = hasFetchedDollarBounty ? getBalanceNumber(estimatedDollarBountyReward, 18) : 0
+  // const cakeBountyToDisplay = hasFetchedCakeBounty ? getBalanceNumber(estimatedCakeBountyReward, 18) : 0
 
-  const { targetRef, tooltip, tooltipVisible } = useTooltip(<TooltipComponent fee={callFee} />, {
+  const { targetRef, tooltip, tooltipVisible } = useTooltip(<TooltipComponent />, {
     placement: 'bottom',
     tooltipPadding: { right: 15 },
   })
@@ -119,20 +120,19 @@ const BountyModal: React.FC<BountyModalProps> = ({ onDismiss, TooltipComponent }
         <Text fontSize="14px" color="textSubtle">
           {t('Pool total pending yield')}
         </Text>
-        <Balance color="textSubtle" value={totalYieldToDisplay} unit=" CAKE" />
+        <Balance color="textSubtle" value={0} unit=" CRYSTAL" />
       </Flex>
       <Flex alignItems="center" justifyContent="space-between" mb="24px">
         <Text fontSize="14px" color="textSubtle">
           {t('Bounty')}
         </Text>
         <Text fontSize="14px" color="textSubtle">
-          {callFeeAsDecimal}%
+          0%
         </Text>
       </Flex>
       {account ? (
         <Button
           isLoading={pendingTx}
-          disabled={!dollarBountyToDisplay || !cakeBountyToDisplay || !callFee}
           endIcon={pendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}
           onClick={handleConfirmClick}
           mb="28px"

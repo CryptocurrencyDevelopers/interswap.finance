@@ -79,6 +79,9 @@ export const usePollCoreFarmData = () => {
   const dispatch = useAppDispatch()
 
   useFastRefreshEffect(() => {
+    /**
+    * this must be the BNB/CAKE pair 1 and the BUSD/CAKE pair 16
+    */
     dispatch(fetchFarmsPublicDataAsync([1, 16]))
   }, [dispatch])
 }
@@ -141,6 +144,7 @@ export const useLpTokenPrice = (symbol: string) => {
 
 /**
  * @@deprecated use the BUSD hook in /hooks
+ * this must be the BNB/CAKE pair
  */
 export const usePriceCakeBusd = (): BigNumber => {
   const cakeBnbFarm = useFarmFromPid(1)

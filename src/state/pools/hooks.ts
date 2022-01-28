@@ -114,15 +114,15 @@ export const useFetchIfoPool = (fetchCakePool = true) => {
 }
 
 export const useCakeVault = () => {
-  return useVaultPoolByKey(VaultKey.CakeVault)
+  return false;
 }
 
-export const useVaultPools = () => {
-  return {
-    [VaultKey.CakeVault]: useVaultPoolByKey(VaultKey.CakeVault),
-    [VaultKey.IfoPool]: useVaultPoolByKey(VaultKey.IfoPool),
-  }
-}
+// export const useVaultPools = () => {
+//   return {
+//     [VaultKey.CakeVault]: useVaultPoolByKey(VaultKey.CakeVault),
+//     [VaultKey.IfoPool]: useVaultPoolByKey(VaultKey.IfoPool),
+//   }
+// }
 
 export const useVaultPoolByKey = (key: VaultKey) => {
   const {
@@ -194,42 +194,42 @@ export const useVaultPoolByKey = (key: VaultKey) => {
   }
 }
 
-export const useIfoPoolVault = () => {
-  return useVaultPoolByKey(VaultKey.IfoPool)
-}
+// export const useIfoPoolVault = () => {
+//   return useVaultPoolByKey(VaultKey.IfoPool)
+// }
 
-export const useIfoPoolCreditBlock = () => {
-  return useSelector((state: State) => ({
-    creditStartBlock: state.pools.ifoPool.creditStartBlock,
-    creditEndBlock: state.pools.ifoPool.creditEndBlock,
-    hasEndBlockOver: state.block.currentBlock >= state.pools.ifoPool.creditEndBlock,
-  }))
-}
+// export const useIfoPoolCreditBlock = () => {
+//   return useSelector((state: State) => ({
+//     creditStartBlock: state.pools.ifoPool.creditStartBlock,
+//     creditEndBlock: state.pools.ifoPool.creditEndBlock,
+//     hasEndBlockOver: state.block.currentBlock >= state.pools.ifoPool.creditEndBlock,
+//   }))
+// }
 
-export const useIfoPoolCredit = () => {
-  const creditAsString = useSelector((state: State) => state.pools.ifoPool.userData?.credit ?? BIG_ZERO)
-  const credit = useMemo(() => {
-    return new BigNumber(creditAsString)
-  }, [creditAsString])
+// export const useIfoPoolCredit = () => {
+//   const creditAsString = useSelector((state: State) => state.pools.ifoPool.userData?.credit ?? BIG_ZERO)
+//   const credit = useMemo(() => {
+//     return new BigNumber(creditAsString)
+//   }, [creditAsString])
 
-  return credit
-}
+//   return credit
+// }
 
-export const useIfoWithApr = () => {
-  const {
-    fees: { performanceFeeAsDecimal },
-  } = useIfoPoolVault()
-  const { pool: poolZero } = usePool(0)
+// export const useIfoWithApr = () => {
+  // const {
+  //   fees: { performanceFeeAsDecimal },
+  // } = useIfoPoolVault()
+  // const { pool: poolZero } = usePool(0)
 
-  const ifoPoolWithApr = useMemo(() => {
-    const ifoPool = { ...poolZero }
-    ifoPool.vaultKey = VaultKey.IfoPool
-    ifoPool.apr = getAprData(ifoPool, performanceFeeAsDecimal).apr
-    ifoPool.rawApr = poolZero.apr
-    return ifoPool
-  }, [performanceFeeAsDecimal, poolZero])
+  // const ifoPoolWithApr = useMemo(() => {
+  //   // const ifoPool = { ...poolZero }
+  //   // ifoPool.vaultKey = VaultKey.IfoPool
+  //   // ifoPool.apr = getAprData(ifoPool, performanceFeeAsDecimal).apr
+  //   // ifoPool.rawApr = poolZero.apr
+  //   // return ifoPool
+  // }, [performanceFeeAsDecimal, poolZero])
 
-  return {
-    pool: ifoPoolWithApr,
-  }
-}
+  // return {
+  //   pool: ifoPoolWithApr,
+  // }
+// }

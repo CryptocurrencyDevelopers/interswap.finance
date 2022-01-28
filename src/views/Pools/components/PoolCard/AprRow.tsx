@@ -7,7 +7,7 @@ import RoiCalculatorModal from 'components/RoiCalculatorModal'
 import { DeserializedPool } from 'state/types'
 import BigNumber from 'bignumber.js'
 import { BIG_ZERO } from 'utils/bigNumber'
-import { vaultPoolConfig } from 'config/constants/pools'
+// import { vaultPoolConfig } from 'config/constants/pools'
 
 const ApyLabelContainer = styled(Flex)`
   cursor: pointer;
@@ -40,7 +40,7 @@ const AprRow: React.FC<AprRowProps> = ({ pool, stakedBalance, performanceFee = 0
   const stakingTokenBalance = userData?.stakingTokenBalance ? new BigNumber(userData.stakingTokenBalance) : BIG_ZERO
 
   const tooltipContent = vaultKey
-    ? t('APY includes compounding, APR doesn’t. This pool’s CAKE is compounded automatically, so we show APY.')
+    ? t('APY includes compounding, APR doesn’t. This pool’s CRYSTAL is compounded automatically, so we show APY.')
     : t('This pool’s rewards aren’t compounded automatically, so we show APR')
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: 'bottom-start' })
@@ -57,7 +57,7 @@ const AprRow: React.FC<AprRowProps> = ({ pool, stakedBalance, performanceFee = 0
       stakingTokenBalance={stakedBalance.plus(stakingTokenBalance)}
       stakingTokenSymbol={stakingToken.symbol}
       earningTokenSymbol={earningToken.symbol}
-      autoCompoundFrequency={vaultPoolConfig[vaultKey]?.autoCompoundFrequency ?? 0}
+      // autoCompoundFrequency={vaultPoolConfig[vaultKey]?.autoCompoundFrequency ?? 0}
       performanceFee={performanceFee}
     />,
   )
