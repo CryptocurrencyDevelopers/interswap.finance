@@ -14,7 +14,7 @@ import {
 import cakeAbi from 'config/abi/crystal.json' 
 import xscAbi from 'config/abi/cake.json' 
 import tokens from 'config/constants/tokens'
-import masterChef from 'config/abi/gemologist.json'
+import masterChef from 'config/abi/masterchef.json'
 import xscMasterChef from 'config/abi/masterchef.json'
 import { getAddress, getMasterChefAddress, getGemologistAddress } from 'utils/addressHelpers'
 import { getPoolApr } from 'utils/apr'

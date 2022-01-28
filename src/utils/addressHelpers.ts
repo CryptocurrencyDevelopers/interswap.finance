@@ -1,7 +1,7 @@
 import { ChainId } from '@pancakeswap/sdk'
 import addresses from 'config/constants/contracts'
 import { Address } from 'config/constants/types'
-import { VaultKey } from 'state/types'
+// import { VaultKey } from 'state/types'
 
 export const getAddress = (address: Address): string => {
   const chainId = process.env.NEXT_PUBLIC_CHAIN_ID
@@ -12,7 +12,7 @@ export const getMasterChefAddress = () => {
   return getAddress(addresses.masterChef)
 }
 export const getGemologistAddress = () => {
-  return getAddress(addresses.gemologist)
+  return getAddress(addresses.masterChef)
 }
 export const getMulticallAddress = () => {
   return getAddress(addresses.multiCall)

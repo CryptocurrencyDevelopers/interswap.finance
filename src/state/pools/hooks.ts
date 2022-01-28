@@ -20,7 +20,7 @@ import {
   fetchCakePoolPublicDataAsync,
   fetchCakePoolUserDataAsync,
 } from '.'
-import { State, DeserializedPool, VaultKey } from '../types'
+import { State, DeserializedPool } from '../types'
 import { transformPool } from './helpers'
 import { fetchFarmsPublicDataAsync, nonArchivedFarms } from '../farms'
 
@@ -131,7 +131,7 @@ export const useVaultPoolByKey = (key: VaultKey) => {
     totalCakeInVault: totalCakeInVaultAsString,
     estimatedCakeBountyReward: estimatedCakeBountyRewardAsString,
     totalPendingCakeHarvest: totalPendingCakeHarvestAsString,
-    fees: { performanceFee, callFee, withdrawalFee, withdrawalFeePeriod },
+    fees: { performanceFee, withdrawalFee, withdrawalFeePeriod },
     userData: {
       isLoading,
       userShares: userSharesAsString,
@@ -180,7 +180,6 @@ export const useVaultPoolByKey = (key: VaultKey) => {
     fees: {
       performanceFeeAsDecimal,
       performanceFee,
-      callFee,
       withdrawalFee,
       withdrawalFeePeriod,
     },
