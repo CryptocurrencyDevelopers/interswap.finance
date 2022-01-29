@@ -26,7 +26,7 @@ export const mainnetTokens = defineTokens({
     '0x7155aFF27df20F9B0ecF8406A5A60c30043894Ec',
     18,
     'XSC',
-    'Electronero Smart Chain BEP20 Token',
+    'Electronero Token',
     'https://electronero.org/',
   ),
   cake_og: new Token(
@@ -42,7 +42,7 @@ export const mainnetTokens = defineTokens({
     '0x4ca6B6b8F10EB17DbD1f8c3F313Eca2F779C6e0B',
     18,
     'CRYSTAL',
-    'Crystaleum CRYSTAL Token',
+    'Crystaleum Token',
     'https://crystaleum.org/',
   ),
   crystal: new Token(
@@ -50,7 +50,7 @@ export const mainnetTokens = defineTokens({
     '0x4ca6B6b8F10EB17DbD1f8c3F313Eca2F779C6e0B',
     18,
     'CRYSTAL',
-    'Crystaleum CRYSTAL Token',
+    'Crystaleum Token',
     'https://crystaleum.org/',
   ),
   tlos: new Token(MAINNET, '0xb6C53431608E626AC81a9776ac3e999c5556717c', 18, 'TLOS', 'Telos', 'https://www.telos.net/'),

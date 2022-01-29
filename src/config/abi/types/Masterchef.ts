@@ -22,7 +22,8 @@ export interface MasterchefInterface extends utils.Interface {
     "BONUS_MULTIPLIER()": FunctionFragment;
     "add(uint256,address,bool)": FunctionFragment;
     "cake()": FunctionFragment;
-    "cakePerBlock()": FunctionFragment;
+    "crystal()": FunctionFragment;
+    "crystalPerBlock()": FunctionFragment;
     "deposit(uint256,uint256)": FunctionFragment;
     "dev(address)": FunctionFragment;
     "devaddr()": FunctionFragment;
@@ -34,7 +35,7 @@ export interface MasterchefInterface extends utils.Interface {
     "migrate(uint256)": FunctionFragment;
     "migrator()": FunctionFragment;
     "owner()": FunctionFragment;
-    "pendingCake(uint256,address)": FunctionFragment;
+    "pendingCrystal(uint256,address)": FunctionFragment;
     "poolInfo(uint256)": FunctionFragment;
     "poolLength()": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
@@ -60,7 +61,7 @@ export interface MasterchefInterface extends utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "cake", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "cakePerBlock",
+    functionFragment: "crystalPerBlock",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -96,7 +97,7 @@ export interface MasterchefInterface extends utils.Interface {
   encodeFunctionData(functionFragment: "migrator", values?: undefined): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "pendingCake",
+    functionFragment: "pendingCrystal",
     values: [BigNumberish, string]
   ): string;
   encodeFunctionData(
@@ -151,9 +152,9 @@ export interface MasterchefInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "add", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "cake", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "crystal", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "cakePerBlock",
+    functionFragment: "crystalPerBlock",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "deposit", data: BytesLike): Result;
@@ -183,7 +184,7 @@ export interface MasterchefInterface extends utils.Interface {
   decodeFunctionResult(functionFragment: "migrator", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "pendingCake",
+    functionFragment: "pendingCrystal",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "poolInfo", data: BytesLike): Result;
@@ -296,7 +297,7 @@ export interface Masterchef extends BaseContract {
 
     cake(overrides?: CallOverrides): Promise<[string]>;
 
-    cakePerBlock(overrides?: CallOverrides): Promise<[BigNumber]>;
+    crystalPerBlock(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     deposit(
       _pid: BigNumberish,
@@ -345,7 +346,7 @@ export interface Masterchef extends BaseContract {
 
     owner(overrides?: CallOverrides): Promise<[string]>;
 
-    pendingCake(
+    pendingCrystal(
       _pid: BigNumberish,
       _user: string,
       overrides?: CallOverrides
@@ -428,7 +429,7 @@ export interface Masterchef extends BaseContract {
 
   cake(overrides?: CallOverrides): Promise<string>;
 
-  cakePerBlock(overrides?: CallOverrides): Promise<BigNumber>;
+  crystalPerBlock(overrides?: CallOverrides): Promise<BigNumber>;
 
   deposit(
     _pid: BigNumberish,
@@ -477,7 +478,7 @@ export interface Masterchef extends BaseContract {
 
   owner(overrides?: CallOverrides): Promise<string>;
 
-  pendingCake(
+  pendingCrystal(
     _pid: BigNumberish,
     _user: string,
     overrides?: CallOverrides
@@ -560,7 +561,7 @@ export interface Masterchef extends BaseContract {
 
     cake(overrides?: CallOverrides): Promise<string>;
 
-    cakePerBlock(overrides?: CallOverrides): Promise<BigNumber>;
+    crystalPerBlock(overrides?: CallOverrides): Promise<BigNumber>;
 
     deposit(
       _pid: BigNumberish,
@@ -601,7 +602,7 @@ export interface Masterchef extends BaseContract {
 
     owner(overrides?: CallOverrides): Promise<string>;
 
-    pendingCake(
+    pendingCrystal(
       _pid: BigNumberish,
       _user: string,
       overrides?: CallOverrides
@@ -721,7 +722,7 @@ export interface Masterchef extends BaseContract {
 
     cake(overrides?: CallOverrides): Promise<BigNumber>;
 
-    cakePerBlock(overrides?: CallOverrides): Promise<BigNumber>;
+    crystalPerBlock(overrides?: CallOverrides): Promise<BigNumber>;
 
     deposit(
       _pid: BigNumberish,
@@ -770,7 +771,7 @@ export interface Masterchef extends BaseContract {
 
     owner(overrides?: CallOverrides): Promise<BigNumber>;
 
-    pendingCake(
+    pendingCrystal(
       _pid: BigNumberish,
       _user: string,
       overrides?: CallOverrides
@@ -842,7 +843,7 @@ export interface Masterchef extends BaseContract {
 
     cake(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    cakePerBlock(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    crystalPerBlock(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     deposit(
       _pid: BigNumberish,
@@ -891,7 +892,7 @@ export interface Masterchef extends BaseContract {
 
     owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    pendingCake(
+    pendingCrystal(
       _pid: BigNumberish,
       _user: string,
       overrides?: CallOverrides

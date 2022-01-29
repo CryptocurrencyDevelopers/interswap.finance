@@ -127,6 +127,5 @@ const farms: SerializedFarmConfig[] = [
     token: serializedTokens.crystal,
     quoteToken: serializedTokens.btcb,
   },
-]
-
+];
 export default farms

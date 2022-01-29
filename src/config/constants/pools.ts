@@ -6,7 +6,23 @@ const serializedTokens = serializeTokens()
 
 
 const pools: SerializedPoolConfig[] = [
-  {
+  
+  { 
+    sousId: 0,
+    stakingToken: serializedTokens.crystal,
+    earningToken: serializedTokens.crystal,
+    contractAddress: {
+      97: '0xd3af5fe61dbaf8f73149bfcfa9fb653ff096029a',
+      56: '0x3307fea1d0effcddfa0485d3d593af10b9677f06',
+    },
+    poolCategory: PoolCategory.CORE,
+    harvest: true,
+    tokenPerBlock: '30',
+    sortOrder: 1,
+    deployedBlockNumber: 1,
+    isFinished: false,
+  },  
+  { 
     sousId: 1,
     stakingToken: serializedTokens.crystal,
     earningToken: serializedTokens.crystal,
@@ -41,7 +57,7 @@ const pools: SerializedPoolConfig[] = [
   // },
    {
     sousId: 2,
-    stakingToken: serializedTokens.crystal,
+    stakingToken: serializedTokens.cake,
     earningToken: serializedTokens.xsc,
     contractAddress: {
       97: '',

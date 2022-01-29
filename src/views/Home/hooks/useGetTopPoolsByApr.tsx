@@ -13,13 +13,13 @@ export function usePoolsWithVault() {
   // const cakeVault = useCakeVault()
   // const ifoPool = useIfoPoolVault()
   const pools = useMemo(() => {
-    const activePools = poolsWithoutAutoVault.filter((pool) => !pool.isFinished)
-    // const cakePool = activePools.find((pool) => pool.sousId === 0)
-    // const cakeAutoVault = { ...cakePool, vaultKey: VaultKey.CakeVault }
+    const activePools = poolsWithoutAutoVault.filter((pool) => pool.sousId === 1)
+    const cakePool = activePools.find((pool) => pool.sousId === 1) 
+    const cakeAutoVault = { ...cakePool, vaultKey: 0 }
     // const ifoPoolVault = { ...cakePool, vaultKey: VaultKey.IfoPool }
     // const cakeAutoVaultWithApr = {
     //   ...cakeAutoVault,
-    //   apr: getAprData(cakeAutoVault, cakeVault.fees.performanceFeeAsDecimal).apr,
+    //   apr: getAprData(cakeAutoVault, 0).apr,
     //   rawApr: cakePool.apr,
     // }
     // const ifoPoolWithApr = {
@@ -27,7 +27,7 @@ export function usePoolsWithVault() {
     //   apr: getAprData(ifoPoolVault, ifoPool.fees.performanceFeeAsDecimal).apr,
     //   rawApr: cakePool.apr,
     // }
-    return [...poolsWithoutAutoVault]
+    return [activePools,...poolsWithoutAutoVault]
   }, [poolsWithoutAutoVault])
 
   return pools
