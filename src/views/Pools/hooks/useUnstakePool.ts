@@ -40,9 +40,11 @@ const useUnstakePool = (sousId: number, enableEmergencyWithdraw = false) => {
       if (sousId === 0) {
         tx = await unstakeFarm(masterChefContract, 0, amount)
       } else if (enableEmergencyWithdraw) {
-        tx = await sousEmergencyUnstake(sousChefContract)
+        // tx = await sousEmergencyUnstake(sousChefContract)
+        tx = await unstakeFarm(masterChefContract, 0, amount)
       } else {
-        tx = await sousUnstake(sousChefContract, amount, decimals)
+        tx = await unstakeFarm(masterChefContract, 0, amount)
+        // tx = await sousUnstake(sousChefContract, amount, decimals)
       }
       onTransactionSubmitted(tx)
       const receipt = await tx.wait()

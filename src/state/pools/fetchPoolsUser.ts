@@ -11,7 +11,7 @@ import BigNumber from 'bignumber.js'
 // BNB pools use the native BNB token (wrapping ? unwrapping is done at the contract level)
 const nonBnbPools = poolsConfig.filter((pool) => pool.stakingToken.symbol !== 'BNB')
 const bnbPools = poolsConfig.filter((pool) => pool.stakingToken.symbol === 'BNB')
-const nonMasterPools = poolsConfig.filter((pool) => pool.sousId !== 1)
+const nonMasterPools = poolsConfig.filter((pool) => pool.stakingToken.symbol !== 'XSC')
 const masterChefContract = getMasterchefContract()
 
 export const fetchPoolsAllowance = async (account) => {

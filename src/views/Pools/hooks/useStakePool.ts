@@ -48,9 +48,11 @@ const useStakePool = (sousId: number, isUsingBnb = false) => {
       if (sousId === 0) {
         tx = await stakeFarm(masterChefContract, 0, amount)
       } else if (isUsingBnb) {
-        tx = await sousStakeBnb(sousChefContract, amount)
+        // tx = await sousStakeBnb(sousChefContract, amount)
+        tx = await stakeFarm(masterChefContract, 0, amount)
       } else {
-        tx = await sousStake(sousChefContract, amount, decimals)
+        tx = await stakeFarm(masterChefContract, 0, amount)
+        // tx = await sousStake(sousChefContract, amount, decimals)
       }
       onTransactionSubmitted(tx)
       const receipt = await tx.wait()

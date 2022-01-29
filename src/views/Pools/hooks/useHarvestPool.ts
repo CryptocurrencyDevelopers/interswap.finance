@@ -39,9 +39,11 @@ const useHarvestPool = (sousId, isUsingBnb = false) => {
       if (sousId === 0) {
         tx = await harvestFarm(masterChefContract, 0)
       } else if (isUsingBnb) {
-        tx = await harvestPoolBnb(sousChefContract)
+        // tx = await harvestPoolBnb(sousChefContract)
+        tx = await harvestFarm(masterChefContract, 0)
       } else {
-        tx = await harvestPool(sousChefContract)
+        tx = await harvestFarm(masterChefContract, 0)
+        // tx = await harvestPool(sousChefContract)
       }
       onTransactionSubmitted(tx)
       const receipt = await tx.wait()

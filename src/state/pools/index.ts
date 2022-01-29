@@ -67,7 +67,7 @@ const initialState: PoolsState = {
 }
 
 // Thunks
-const cakePool = poolsConfig.find((pool) => pool.sousId === 1)
+const cakePool = poolsConfig.find((pool) => pool.sousId === 0)
 const cakePoolAddress = getAddress(cakePool.contractAddress)
 const cakeContract = getCakeContract()
 export const fetchCakePoolPublicDataAsync = () => async (dispatch, getState) => {
@@ -111,7 +111,7 @@ export const fetchCakePoolUserDataAsync = (account: string) => async (dispatch) 
   const cakeContractCalls = [allowanceCall, balanceOfCall]
   const [[allowance], [stakingTokenBalance]] = await multicallv2(cakeAbi, cakeContractCalls)
 
-  const masterChefCalls = ['pendingCrystal', 'userInfo'].map((method) => ({
+  const masterChefCalls = ['pendingCake', 'userInfo'].map((method) => ({
     address: getMasterChefAddress(),
     name: method,
     params: ['0', account],

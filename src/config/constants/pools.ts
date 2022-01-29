@@ -7,7 +7,7 @@ const serializedTokens = serializeTokens()
 
 const pools: SerializedPoolConfig[] = [
   {
-    sousId: 1,
+    sousId: 0,
     stakingToken: serializedTokens.xsc,
     earningToken: serializedTokens.xsc,
     contractAddress: {
@@ -17,10 +17,11 @@ const pools: SerializedPoolConfig[] = [
     poolCategory: PoolCategory.CORE,
     harvest: true,
     tokenPerBlock: '30',
-    sortOrder: 1,
+    sortOrder: 0,
     deployedBlockNumber: 1,
     isFinished: false,
-  },  
+  },    
+  
   // {
   //   sousId: 1,
   //   tokenName: 'XSC',
