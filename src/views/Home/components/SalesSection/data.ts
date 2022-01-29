@@ -1,8 +1,8 @@
 import { SalesSectionProps } from '.'
 
 export const swapSectionData: SalesSectionProps = {
-  headingText: 'Trade anything. No registration, no hassle.',
-  bodyText: 'Trade any token on Binance Smart Chain in seconds, just by connecting your wallet.',
+  headingText: 'Interswap with PancakeSwap. Trade anything. No additional fees, no registration necessary.',
+  bodyText: 'Trade any tokens you want on Binance Smart Chain in a matter of seconds. It really is that easy. Why? Because we <3 PancakeSwap. The decentralized exchange is provided as a courtesy for our users to transact with billions in liquidity on Binance Smart Chain. Stake and Earn in our Yield Farms and Staking Pools, try them out today! ',
   reverse: false,
   primaryButton: {
     to: '/swap',
@@ -10,15 +10,15 @@ export const swapSectionData: SalesSectionProps = {
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.pancakeswap.finance/',
-    text: 'Learn',
+    to: '/pools',
+    text: 'Start Staking',
     external: true,
   },
   images: {
     path: '/images/home/trade/',
     attributes: [
       { src: 'BNB', alt: 'BNB token' },
-      { src: 'BTC', alt: 'BTC token' },
+      { src: 'XSC', alt: 'XSC token' },
       { src: 'CAKE', alt: 'CAKE token' },
     ],
   },
@@ -26,11 +26,11 @@ export const swapSectionData: SalesSectionProps = {
 
 export const earnSectionData: SalesSectionProps = {
   headingText: 'Earn passive income with crypto.',
-  bodyText: 'PancakeSwap makes it easy to make your crypto work for you.',
+  bodyText: 'InterSwap makes it easy to make your crypto work for you.',
   reverse: true,
   primaryButton: {
     to: '/farms',
-    text: 'Explore',
+    text: 'Start Farming',
     external: false,
   },
   secondaryButton: {
@@ -41,36 +41,33 @@ export const earnSectionData: SalesSectionProps = {
   images: {
     path: '/images/home/earn/',
     attributes: [
-      { src: 'pie', alt: 'Pie chart' },
       { src: 'stonks', alt: 'Stocks chart' },
-      { src: 'folder', alt: 'Folder with cake token' },
+      { src: 'XSC', alt: 'XSC' },
+      { src: 'CRYSTAL', alt: 'CRYSTAL' },
     ],
   },
 }
 
 export const cakeSectionData: SalesSectionProps = {
-  headingText: 'CAKE makes our world go round.',
+  headingText: 'XSC is the main rewards token for our v1 Yield Farm, and Staking Pools. CRYSTAL is the governance token for our GameFi & NFT operations.',
   bodyText:
-    'CAKE token is at the heart of the PancakeSwap ecosystem. Buy it, win it, farm it, spend it, stake it... heck, you can even vote with it!',
+    'XSC token is at the core of the InterSwap DeFi ecosystem. CRYSTAL is part of our P2E & PvP GameFi and NFT division. Trade, win, mint, burn, play, farm, spend, stake... and more functions to be announced soon!',
   reverse: false,
   primaryButton: {
-    to: '/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
-    text: 'Buy CAKE',
+    to: '/swap?outputCurrency=0x7155aff27df20f9b0ecf8406a5a60c30043894ec',
+    text: 'Buy XSC',
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.pancakeswap.finance/tokenomics/cake',
-    text: 'Learn',
+    to: '/swap?outputCurrency=0x4ca6b6b8f10eb17dbd1f8c3f313eca2f779c6e0b',
+    text: 'Buy CRYSTAL',
     external: true,
   },
-
   images: {
-    path: '/images/home/cake/',
+    path: '/images/home/earn/',
     attributes: [
-      { src: 'bottom-right', alt: 'Small 3d pancake' },
-      { src: 'top-right', alt: 'Small 3d pancake' },
-      { src: 'coin', alt: 'CAKE token' },
-      { src: 'top-left', alt: 'Small 3d pancake' },
+      { src: 'XSC', alt: 'XSC' },
+      { src: 'CRYSTAL', alt: 'CRYSTAL' },
     ],
   },
 }

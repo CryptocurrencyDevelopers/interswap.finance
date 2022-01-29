@@ -29,7 +29,8 @@ const LotteryCardContent = () => {
   const [currentLotteryPrize, setCurrentLotteryPrize] = useState<BigNumber>(null)
   const cakePriceBusdAsString = usePriceCakeBusd().toString()
 
-  const cakePrizesText = t('%cakePrizeInUsd% in CAKE prizes this round', { cakePrizeInUsd: cakePriceBusdAsString })
+  // const cakePrizesText = t('%cakePrizeInUsd% in XSC prizes this round', { cakePrizeInUsd: cakePriceBusdAsString })
+  const cakePrizesText = t('Yield Farming / Staking Online!')
   const [pretext, prizesThisRound] = cakePrizesText.split(cakePriceBusdAsString)
 
   const cakePriceBusd = useMemo(() => {
@@ -71,39 +72,24 @@ const LotteryCardContent = () => {
     <>
       <Flex flexDirection="column" mt="48px">
         <Text color="white" bold fontSize="16px">
-          {t('Lottery')}
+          {t('XSC')}
         </Text>
         {pretext && (
           <Text color="white" mt="12px" bold fontSize="16px">
             {pretext}
           </Text>
         )}
-        {currentLotteryPrize && currentLotteryPrize.gt(0) ? (
-          <StyledBalance
-            fontSize="40px"
-            bold
-            prefix="$"
-            decimals={0}
-            value={getBalanceAmount(currentLotteryPrize).toNumber()}
-          />
-        ) : (
-          <>
-            <Skeleton width={200} height={40} my="8px" />
-            <div ref={observerRef} />
-          </>
-        )}
-        <Text color="white" mb="24px" bold fontSize="16px">
-          {prizesThisRound}
-        </Text>
+        <>
+        </>
         <Text color="white" mb="40px">
-          {t('Buy tickets with CAKE, win CAKE if your numbers match')}
+          {t('Buy XSC with CRYSTAL for extra-low slippage!')}
         </Text>
       </Flex>
       <Flex alignItems="center" justifyContent="center">
-        <StyledLink to="/lottery" id="homepage-prediction-cta">
+        <StyledLink to="/swap?outputCurrency=0x7155aff27df20f9b0ecf8406a5a60c30043894ec" id="homepage-prediction-cta">
           <Button width="100%">
             <Text bold color="invertedContrast">
-              {t('Buy Tickets')}
+              {t('Buy XSC')}
             </Text>
             <ArrowForwardIcon ml="4px" color="invertedContrast" />
           </Button>

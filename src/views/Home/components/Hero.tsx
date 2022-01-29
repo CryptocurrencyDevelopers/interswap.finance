@@ -127,7 +127,7 @@ const Hero = () => {
           </Heading>
           <BabyWrapper>
           <Heading className="pinkish" scale="md" mb="24px">
-            {t('Intergalactic Space Racing game sets the gateway into the world of metaverse space gaming!')}
+            {t('Interswap is the future of a decentralized launchpad for GameFi / DeFi! Interswap starts out with PancakeSwap connected to billions in available liquidity to trade on Binance Smart Chain. Our tokens, and Yield Farms / Staking Pools are here as well as our futur operations on the moon and the mars!')}
             {/* <button type="button" onClick={() => {
                 throw new Error("Sentry Frontend Error");
             }}>

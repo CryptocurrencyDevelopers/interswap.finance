@@ -20,7 +20,7 @@ const Stats = () => {
   const trades = formatLocalisedCompactNumber(txCount)
   const users = formatLocalisedCompactNumber(addressCount)
 
-  const tvlText = t('And those users are now entrusting the platform with over $%tvl% in funds.', { tvl: tvlString })
+  const tvlText = t('And "those users are entrusting the platform with over $%tvl% in funds".', { tvl: tvlString })
   const [entrusting, inFunds] = tvlText.split(tvlString)
 
   const UsersCardData: IconCardData = {
@@ -45,7 +45,7 @@ const Stats = () => {
         {t('Trusted with billions.')}
       </Heading>
       <Text textAlign="center" color="textSubtle">
-        {t('PancakeSwap has the most users of any decentralized platform, ever.')}
+        {t('Through DeFi connections with PancakeSwap, InterSwap is able offer lightning-fast trading with "the most users of any decentralized platform, ever".')}
       </Text>
       <Flex flexWrap="wrap">
         <Text display="inline" textAlign="center" color="textSubtle" mb="20px">

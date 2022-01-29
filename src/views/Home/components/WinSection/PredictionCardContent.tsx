@@ -47,31 +47,18 @@ const PredictionCardContent = () => {
     <>
       <Flex flexDirection="column" mt="48px">
         <Text color="#280D5F" bold fontSize="16px">
-          {t('Prediction')}
+          {t('CRYSTAL')}
         </Text>
-        {bnbWonInUsd ? (
-          <Heading color="#280D5F" my="8px" scale="xl" bold>
-            {pretext}
-            {localisedBnbUsdString}
-          </Heading>
-        ) : (
-          <>
-            <Skeleton width={230} height={40} my="8px" />
-            <div ref={observerRef} />
-          </>
-        )}
-        <Text color="#280D5F" mb="24px" bold fontSize="16px">
-          {wonSoFar}
-        </Text>
+        <Heading color="#280D5F" my="8px" scale="xl" bold />
         <Text color="#280D5F" mb="40px">
-          {t('Will BNB price rise or fall? guess correctly to win!')}
+          {t('Will CRYSTAL price rise or fall? Buy and Sell with BNB or any token on Binance Smart Chain. ')}
         </Text>
       </Flex>
       <Flex alignItems="center" justifyContent="center">
-        <StyledLink to="/prediction" id="homepage-prediction-cta">
+        <StyledLink to="/swap?outputCurrency=0x4ca6b6b8f10eb17dbd1f8c3f313eca2f779c6e0b" id="homepage-prediction-cta">
           <Button width="100%">
             <Text bold color="invertedContrast">
-              {t('Play')}
+              {t('Buy CRYSTAL')}
             </Text>
             <ArrowForwardIcon ml="4px" color="invertedContrast" />
           </Button>

@@ -6,32 +6,23 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
     label: t('About'),
     items: [
       {
-        label: t('Contact'),
-        href: 'https://docs.pancakeswap.finance/contact-us',
+        label: t('Electronero Smart Chain'),
+        href: 'https://t.me/electronero',
       },
       {
-        label: t('Brand'),
-        href: 'https://docs.pancakeswap.finance/brand',
-      },
-      {
-        label: t('Blog'),
-        href: 'https://medium.com/pancakeswap',
-      },
-      {
-        label: t('Community'),
-        href: 'https://docs.pancakeswap.finance/contact-us/telegram',
-      },
-      {
-        label: t('CAKE token'),
-        href: 'https://docs.pancakeswap.finance/tokenomics/cake',
+        label: t('Crystaleum'),
+        href: 'https://t.me/crystaleum',
       },
       {
         label: '—',
       },
       {
-        label: t('Online Store'),
-        href: 'https://pancakeswap.creator-spring.com/',
-        isHighlighted: true,
+        label: t('XSC token'),
+        href: 'https://electronero.org',
+      },
+      {
+        label: t('CRYSTAL token'),
+        href: 'https://crystaleum.org',
       },
     ],
   },
@@ -39,11 +30,15 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
     label: t('Help'),
     items: [
       {
-        label: t('Customer Support'),
-        href: 'https://docs.pancakeswap.finance/contact-us/customer-support',
+        label: t('Contact'),
+        href: 'https://electronero.org/#contact',
       },
       {
-        label: t('Troubleshooting'),
+        label: t('Community'),
+        href: 'https://t.me/interswapfinance',
+      },
+      {
+        label: t('Troubleshooting Pancakeswap'),
         href: 'https://docs.pancakeswap.finance/help/troubleshooting',
       },
       {
