@@ -51,9 +51,7 @@ const PoolRow: React.FC<PoolRowProps> = ({ pool, account, userDataLoaded }) => {
         ) : (
           <EarningsCell pool={pool} account={account} userDataLoaded={userDataLoaded} />
         )}
-        {pool.vaultKey === VaultKey.IfoPool ? (
-          <IFOCreditCell account={account} />
-        ) : isXLargerScreen && isCakePool ? (
+        {isXLargerScreen && isCakePool ? (
           <StakedCell pool={pool} account={account} userDataLoaded={userDataLoaded} />
         ) : null}
         {isLargerScreen && !isCakePool && <TotalStakedCell pool={pool} />}
