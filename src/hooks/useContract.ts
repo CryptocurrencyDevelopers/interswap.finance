@@ -35,7 +35,6 @@ import {
   getBunnySpecialXmasContract,
 } from 'utils/contractHelpers'
 import { getMulticallAddress } from 'utils/addressHelpers'
-import { VaultKey } from 'state/types'
 import {
   CakeVault,
   EnsPublicResolver,
@@ -170,9 +169,7 @@ export const useEasterNftContract = () => {
 export const useVaultPoolContract = (vaultKey: VaultKey): CakeVault | IfoPool => {
   const { library } = useActiveWeb3React()
   return useMemo(() => {
-    return vaultKey === VaultKey.CakeVault
-      ? getCakeVaultContract(library.getSigner())
-      : getIfoPoolContract(library.getSigner())
+    return getCakeVaultContract(library.getSigner())
   }, [library, vaultKey])
 }
 

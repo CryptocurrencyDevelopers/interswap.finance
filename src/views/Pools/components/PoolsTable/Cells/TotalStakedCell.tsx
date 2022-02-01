@@ -25,13 +25,11 @@ const TotalStakedCell: React.FC<TotalStakedCellProps> = ({ pool }) => {
   const isManualCakePool = sousId === 0
 
   const totalStakedBalance = useMemo(() => {
-
     return getBalanceNumber(totalStaked, stakingToken.decimals)
-  }, [vaultKey, isManualCakePool, totalStaked, stakingToken.decimals])
-
-  return (
-    <StyledCell role="cell">
-      <CellContent>
+  }, [vaultKey, totalStaked, stakingToken.decimals])
+return (
+  <StyledCell role="cell">
+    <CellContent>
         <Text fontSize="12px" color="textSubtle" textAlign="left">
           {t('Total staked')}
         </Text>
