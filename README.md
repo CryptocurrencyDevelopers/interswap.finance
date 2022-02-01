@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/7bebf1a3-be7b-4165-afd1-446256acd5e3/deploy-status)](https://app.netlify.com/sites/pancake-prod/deploys)
 
-This is a fork of pancake-frontend for intergalactic space racing, but they moved to Polygon so this repo will not be maintained.
+This is a fork of pancake-frontend for intergalactic space racing, but they moved to Polygon so this repo will likely not be maintained.
 
 To start:
 ```yarn && yarn dev```
