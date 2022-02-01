@@ -6,6 +6,7 @@ import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'state'
 import { deserializeToken } from 'state/user/hooks/helpers'
+import { useBNBBusdPrices } from 'hooks/useBUSDPrice' 
 import { BIG_ZERO } from 'utils/bigNumber'
 import { getBalanceAmount } from 'utils/formatBalance'
 import { fetchFarmsPublicDataAsync, fetchFarmUserDataAsync, nonArchivedFarms } from '.'
@@ -155,5 +156,6 @@ export const useLpTokenPrice = (symbol: string) => {
     return new BigNumber(cakePriceBusdAsString)
   }, [cakePriceBusdAsString])
   console.log(cakePriceBusdAsString);
+  console.log(useBNBBusdPrices('bnb',1));
   return cakePriceBusd
 }

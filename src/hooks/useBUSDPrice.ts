@@ -75,6 +75,16 @@ export const useCakeBusdPrice = (): Price | undefined => {
   return cakeBusdPrice
 }
 
+export const useCrystalBusdPrice = (): Price | undefined => {
+  const crystalBusdPrice = useBUSDPrice(tokens.crystal)
+  return crystalBusdPrice
+}
+
+export const useXSCBusdPrice = (): Price | undefined => {
+  const xscBusdPrice = useBUSDPrice(tokens.xsc)
+  return xscBusdPrice
+}
+
 export const useBUSDCurrencyAmount = (currency: Currency, amount: number): number | undefined => {
   const { chainId } = useActiveWeb3React()
   const busdPrice = useBUSDPrice(currency)
@@ -96,4 +106,10 @@ export const useBUSDCakeAmount = (amount: number): number | undefined => {
 export const useBNBBusdPrice = (): Price | undefined => {
   const bnbBusdPrice = useBUSDPrice(tokens.wbnb)
   return bnbBusdPrice
+}
+export const useBNBBusdPrices = (currency: Currency, amount: number): Price | undefined => {
+  const bnbBusdPrice = useBUSDPrice(tokens.wbnb)
+  const currencyPrice = useBUSDPrice(currency)
+  console.log(currencyPrice)
+  return multiplyPriceByAmount(bnbBusdPrice, amount, 18)
 }
