@@ -91,9 +91,6 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, cakePric
                   lpLabel={lpLabel}
                   addLiquidityUrl={addLiquidityUrl}
                   cakePrice={cakePrice}
-                  xscPrice={xscPrice}
-                  crystalPrice={crystalPrice}
-                  bnbBUSDPrice={bnbBUSDPrice}
                   apr={farm.apr}
                   displayApr={displayApr}
                 />
@@ -112,8 +109,6 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, cakePric
           lpLabel={lpLabel}
           account={account}
           cakePrice={cakePrice}
-          xscPrice={xscPrice}
-          crystalPrice={crystalPrice}
           bnbBUSDPrice={bnbBUSDPrice}
           addLiquidityUrl={addLiquidityUrl}
         />

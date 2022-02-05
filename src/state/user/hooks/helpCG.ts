@@ -24,7 +24,7 @@ const useGetCGPriceData = () => {
         // @ts-ignore
         // eslint-disable-next-line no-console
         console.log("bnb: ",res.binancecoin.usd)
-        setData(res.binancecoin.usd)
+        setData(res)
       } catch (error) {
         console.error('Unable to fetch price data:', error)
       }

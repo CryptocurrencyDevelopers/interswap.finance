@@ -3,10 +3,8 @@ import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
 import { Text, useMatchBreakpoints, TokenPairImage as UITokenPairImage } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
-import { useVaultPoolByKey } from 'state/pools/hooks'
 import { DeserializedPool } from 'state/types'
 import { BIG_ZERO } from 'utils/bigNumber'
-import { vaultPoolConfig } from 'config/constants/pools'
 import { TokenPairImage } from 'components/TokenImage'
 import BaseCell, { CellContent } from './BaseCell'
 
@@ -27,11 +25,7 @@ const StyledCell = styled(BaseCell)`
 const NameCell: React.FC<NameCellProps> = ({ pool }) => {
   const { t } = useTranslation()
   const { isMobile } = useMatchBreakpoints()
-  const { sousId, stakingToken, earningToken, userData, isFinished, vaultKey } = pool
-  const {
-    userData: { userShares },
-  } = useVaultPoolByKey(pool.vaultKey)
-  const hasVaultShares = userShares && userShares.gt(0)
+  const { sousId, stakingToken, earningToken, userData, isFinished } = pool
 
   const stakingTokenSymbol = stakingToken.symbol
   const earningTokenSymbol = earningToken.symbol
@@ -40,27 +34,20 @@ const NameCell: React.FC<NameCellProps> = ({ pool }) => {
   const isStaked = stakedBalance.gt(0)
   const isManualCakePool = sousId === 0
 
-  const showStakedTag = vaultKey ? hasVaultShares : isStaked
+  const showStakedTag = isStaked
 
   let title = `${t('Earn')} ${earningTokenSymbol}`
   let subtitle = `${t('Stake')} ${stakingTokenSymbol}`
   const showSubtitle = sousId !== 0 || (sousId === 0 && !isMobile)
 
-  if (vaultKey) {
-    title = t(vaultPoolConfig[vaultKey].name)
-    subtitle = t(vaultPoolConfig[vaultKey].description)
-  } else if (isManualCakePool) {
-    title = t('Manual CAKE')
-    subtitle = `${t('Earn')} CAKE ${t('Stake').toLocaleLowerCase()} CAKE`
+  if (isManualCakePool) {
+    title = t('Manual XSC')
+    subtitle = `${t('Earn')} XSC ${t('Stake').toLocaleLowerCase()} XSC`
   }
 
   return (
     <StyledCell role="cell">
-      {vaultKey ? (
-        <UITokenPairImage {...vaultPoolConfig[vaultKey].tokenImage} mr="8px" width={40} height={40} />
-      ) : (
-        <TokenPairImage primaryToken={earningToken} secondaryToken={stakingToken} mr="8px" width={40} height={40} />
-      )}
+      <TokenPairImage primaryToken={earningToken} secondaryToken={stakingToken} mr="8px" width={40} height={40} />
       <CellContent>
         {showStakedTag && (
           <Text fontSize="12px" bold color={isFinished ? 'failure' : 'secondary'} textTransform="uppercase">

@@ -34,29 +34,29 @@ const AprRow: React.FC<AprRowProps> = ({ pool, stakedBalance, performanceFee = 0
     earningTokenPrice,
     stakingTokenPrice,
     userData,
-    vaultKey,
   } = pool
 
   const stakingTokenBalance = userData?.stakingTokenBalance ? new BigNumber(userData.stakingTokenBalance) : BIG_ZERO
 
-  const tooltipContent = vaultKey
+  const tooltipContent = true
     ? t('APY includes compounding, APR doesn’t. This pool’s CRYSTAL is compounded automatically, so we show APY.')
     : t('This pool’s rewards aren’t compounded automatically, so we show APR')
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: 'bottom-start' })
 
   const apyModalLink = stakingToken.address ? `/swap?outputCurrency=${stakingToken.address}` : '/swap'
-
+  const pts = (stakingToken.symbol === "cake") ? "XSC" : (stakingToken.symbol === "CAKE") ? "XSC" : stakingToken.symbol
+  const pss = (earningToken.symbol === "cake") ? "XSC" : (earningToken.symbol === "CAKE") ? "XSC" : earningToken.symbol
   const [onPresentApyModal] = useModal(
     <RoiCalculatorModal
       earningTokenPrice={earningTokenPrice}
       stakingTokenPrice={stakingTokenPrice}
-      apr={vaultKey ? rawApr : apr}
+      apr={rawApr}
       linkLabel={t('Get %symbol%', { symbol: stakingToken.symbol })}
       linkHref={apyModalLink}
       stakingTokenBalance={stakedBalance.plus(stakingTokenBalance)}
-      stakingTokenSymbol={stakingToken.symbol}
-      earningTokenSymbol={earningToken.symbol}
+      stakingTokenSymbol={pts}
+      earningTokenSymbol={pss}
       // autoCompoundFrequency={vaultPoolConfig[vaultKey]?.autoCompoundFrequency ?? 0}
       performanceFee={performanceFee}
     />,
@@ -65,7 +65,7 @@ const AprRow: React.FC<AprRowProps> = ({ pool, stakedBalance, performanceFee = 0
   return (
     <Flex alignItems="center" justifyContent="space-between">
       {tooltipVisible && tooltip}
-      <TooltipText ref={targetRef}>{vaultKey ? `${t('APY')}:` : `${t('APR')}:`}</TooltipText>
+      <TooltipText ref={targetRef}>{`${t('APY')}:`}</TooltipText>
       {apr || isFinished ? (
         <ApyLabelContainer alignItems="center" onClick={onPresentApyModal}>
           <Balance

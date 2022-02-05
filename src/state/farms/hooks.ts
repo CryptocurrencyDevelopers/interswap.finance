@@ -155,7 +155,5 @@ export const useLpTokenPrice = (symbol: string) => {
   const cakePriceBusd = useMemo(() => {
     return new BigNumber(cakePriceBusdAsString)
   }, [cakePriceBusdAsString])
-  console.log(cakePriceBusdAsString);
-  console.log(useBNBBusdPrices('bnb',1));
   return cakePriceBusd
 }

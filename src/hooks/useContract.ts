@@ -166,11 +166,11 @@ export const useEasterNftContract = () => {
   return useMemo(() => getEasterNftContract(library.getSigner()), [library])
 }
 
-export const useVaultPoolContract = (vaultKey: VaultKey): CakeVault | IfoPool => {
+export const useVaultPoolContract = (): CakeVault | IfoPool => {
   const { library } = useActiveWeb3React()
   return useMemo(() => {
     return getCakeVaultContract(library.getSigner())
-  }, [library, vaultKey])
+  }, [library])
 }
 
 export const useCakeVaultContract = () => {

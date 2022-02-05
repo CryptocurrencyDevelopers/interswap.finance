@@ -6,7 +6,6 @@ import { DeserializedPool } from 'state/types'
 import useIntersectionObserver from 'hooks/useIntersectionObserver'
 import useGetTopFarmsByApr from 'views/Home/hooks/useGetTopFarmsByApr'
 import useGetTopPoolsByApr from 'views/Home/hooks/useGetTopPoolsByApr'
-import { vaultPoolConfig } from 'config/constants/pools'
 import TopFarmPool from './TopFarmPool'
 import RowHeading from './RowHeading'
 
@@ -51,17 +50,21 @@ const FarmsPoolsRow = () => {
   }, [timer, isLoaded, startTimer])
 
   const getPoolText = (pool: DeserializedPool) => {
-    if (pool.vaultKey) {
-      return t(vaultPoolConfig[pool.vaultKey].name)
-    }
 
     if (pool.sousId === 0) {
-      return t('Manual CAKE')
-    }
+      return t('Manual XSC')
+    }    
+    
+    // if (pool.earningToken.symbol === "CAKE" || pool.earningToken.symbol === "XSC" || pool.earningToken.symbol === "cake" || pool.earningToken.symbol === "xsc") {
+    //   return t('Manual XSC')
+    // }
+
+    const pts = (pool.earningToken.symbol === "CAKE") ? "XSC" : (pool.earningToken.symbol === "cake") ? "XSC" : pool.earningToken.symbol;
+    const pss = (pool.stakingToken.symbol === "CAKE") ? "XSC" : (pool.stakingToken.symbol === "cake") ? "XSC" : pool.stakingToken.symbol;
 
     return t('Stake %stakingSymbol% - Earn %earningSymbol%', {
-      earningSymbol: pool.earningToken.symbol,
-      stakingSymbol: pool.stakingToken.symbol,
+      earningSymbol: pts,
+      stakingSymbol: pss,
     })
   }
 
@@ -69,7 +72,7 @@ const FarmsPoolsRow = () => {
     <div ref={observerRef}>
       <Flex flexDirection="column" mt="24px">
         <Flex mb="24px">
-          <RowHeading text={showFarms ? t('Top Farms') : t('Top Syrup Pools')} />
+          <RowHeading text={showFarms ? t('Top Yield Farms') : t('Top Staking Pools')} />
           <IconButton
             variant="text"
             height="100%"

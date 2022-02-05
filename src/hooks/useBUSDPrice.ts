@@ -107,7 +107,7 @@ export const useBNBBusdPrice = (): Price | undefined => {
   const bnbBusdPrice = useBUSDPrice(tokens.wbnb)
   return bnbBusdPrice
 }
-export const useBNBBusdPrices = (currency: Currency, amount: number): Price | undefined => {
+export const useBNBBusdPrices = (currency: Currency, amount: number): number | undefined => {
   const bnbBusdPrice = useBUSDPrice(tokens.wbnb)
   const currencyPrice = useBUSDPrice(currency)
   console.log(currencyPrice)

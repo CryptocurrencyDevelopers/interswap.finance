@@ -48,13 +48,6 @@ export const getEasterNftAddress = () => {
   return getAddress(addresses.easterNft)
 }
 
-export const getVaultPoolAddress = (vaultKey: VaultKey) => {
-  if (!vaultKey) {
-    return null
-  }
-  return getAddress(addresses[vaultKey])
-}
-
 export const getCakeVaultAddress = () => {
   return getAddress(addresses.cakeVault)
 }

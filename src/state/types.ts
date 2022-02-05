@@ -70,7 +70,6 @@ interface CorePoolProps {
   rawApr?: number
   stakingTokenPrice?: number
   earningTokenPrice?: number
-  vaultKey?: VaultKey
 }
 
 export interface DeserializedPool extends DeserializedPoolConfig, CorePoolProps {

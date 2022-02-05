@@ -16,21 +16,19 @@ import {
 import { BASE_BSC_SCAN_URL } from 'config'
 import { getBscScanLink } from 'utils'
 import { useCurrentBlock } from 'state/block/hooks'
-import { useVaultPoolByKey } from 'state/pools/hooks'
 import BigNumber from 'bignumber.js'
 import { DeserializedPool } from 'state/types'
 import { useTranslation } from 'contexts/Localization'
 import Balance from 'components/Balance'
 import { CompoundingPoolTag, ManualPoolTag } from 'components/Tags'
-import { getAddress, getVaultPoolAddress } from 'utils/addressHelpers'
+import { getAddress } from 'utils/addressHelpers'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { registerToken } from 'utils/wallet'
 import { getBalanceNumber, getFullDisplayBalance } from 'utils/formatBalance'
-import { convertSharesToCake, getPoolBlockInfo } from 'views/Pools/helpers'
+import { getPoolBlockInfo } from 'views/Pools/helpers'
 import Harvest from './Harvest'
 import Stake from './Stake'
 import Apr from '../Apr'
-import AutoHarvest from './AutoHarvest'
 
 const expandAnimation = keyframes`
   from {
@@ -123,11 +121,9 @@ const ActionPanel: React.FC<ActionPanelProps> = ({ account, pool, userDataLoaded
     stakingLimit,
     contractAddress,
     userData,
-    vaultKey,
   } = pool
   const { t } = useTranslation()
   const poolContractAddress = getAddress(contractAddress)
-  const vaultContractAddress = getVaultPoolAddress(vaultKey)
   const currentBlock = useCurrentBlock()
   const { isXs, isSm, isMd } = breakpoints
   const showSubtitle = (isXs || isSm) && sousId === 0
@@ -138,20 +134,9 @@ const ActionPanel: React.FC<ActionPanelProps> = ({ account, pool, userDataLoaded
   const isMetaMaskInScope = !!window.ethereum?.isMetaMask
   const tokenAddress = earningToken.address || ''
 
-  const {
-    userData: { userShares },
-    fees: { performanceFeeAsDecimal },
-    pricePerFullShare,
-  } = useVaultPoolByKey(vaultKey)
-
-
-
   const stakingTokenBalance = userData?.stakingTokenBalance ? new BigNumber(userData.stakingTokenBalance) : BIG_ZERO
   const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
-  const { cakeAsBigNumber } = convertSharesToCake(userShares, pricePerFullShare)
-  const poolStakingTokenBalance = vaultKey
-    ? cakeAsBigNumber.plus(stakingTokenBalance)
-    : stakedBalance.plus(stakingTokenBalance)
+  const poolStakingTokenBalance = stakedBalance.plus(stakingTokenBalance)
 
   const getTotalStakedBalance = () => {
     return getBalanceNumber(totalStaked, stakingToken.decimals)
@@ -174,7 +159,7 @@ const ActionPanel: React.FC<ActionPanelProps> = ({ account, pool, userDataLoaded
     targetRef: tagTargetRef,
     tooltip: tagTooltip,
     tooltipVisible: tagTooltipVisible,
-  } = useTooltip(vaultKey ? autoTooltipText : manualTooltipText, {
+  } = useTooltip(manualTooltipText, {
     placement: 'bottom-start',
   })
 
@@ -210,7 +195,7 @@ const ActionPanel: React.FC<ActionPanelProps> = ({ account, pool, userDataLoaded
         pool={pool}
         showIcon
         stakedBalance={poolStakingTokenBalance}
-        performanceFee={vaultKey ? performanceFeeAsDecimal : 0}
+        performanceFee={0}
       />
     </Flex>
   )
@@ -254,7 +239,7 @@ const ActionPanel: React.FC<ActionPanelProps> = ({ account, pool, userDataLoaded
         {poolContractAddress && (
           <Flex mb="8px" justifyContent={['flex-end', 'flex-end', 'flex-start']}>
             <LinkExternal
-              href={`${BASE_BSC_SCAN_URL}/address/${vaultKey ? vaultContractAddress : poolContractAddress}`}
+              href={`${BASE_BSC_SCAN_URL}/address/${poolContractAddress}`}
               bold={false}
             >
               {t('View Contract')}
@@ -273,8 +258,8 @@ const ActionPanel: React.FC<ActionPanelProps> = ({ account, pool, userDataLoaded
               <MetamaskIcon ml="4px" />
             </Button>
           </Flex>
-        )}
-        {vaultKey ? <CompoundingPoolTag /> : <ManualPoolTag />}
+        )}<CompoundingPoolTag /> 
+        <ManualPoolTag />
         {tagTooltipVisible && tagTooltip}
         <span ref={tagTargetRef}>
           <HelpIcon ml="4px" width="20px" height="20px" color="textSubtle" />
@@ -283,14 +268,10 @@ const ActionPanel: React.FC<ActionPanelProps> = ({ account, pool, userDataLoaded
       <ActionContainer>
         {showSubtitle && (
           <Text mt="4px" mb="16px" color="textSubtle">
-            {`${t('Earn')} CAKE ${t('Stake').toLocaleLowerCase()} CAKE`}
+            {`${t('Earn')} XSC ${t('Stake').toLocaleLowerCase()} XSC`}
           </Text>
         )}
-        {pool.vaultKey ? (
-          <AutoHarvest {...pool} userDataLoaded={userDataLoaded} />
-        ) : (
-          <Harvest {...pool} userDataLoaded={userDataLoaded} />
-        )}
+        <Harvest {...pool} userDataLoaded={userDataLoaded} />
         <Stake pool={pool} userDataLoaded={userDataLoaded} />
       </ActionContainer>
     </StyledActionPanel>

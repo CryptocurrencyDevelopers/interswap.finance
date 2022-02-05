@@ -2,9 +2,9 @@ import { useState, useEffect, useMemo } from 'react'
 import { usePriceCakeBusd } from 'state/farms/hooks'
 import { useAppDispatch } from 'state'
 import orderBy from 'lodash/orderBy'
-import { VaultKey, DeserializedPool } from 'state/types'
+import { DeserializedPool } from 'state/types'
 import { fetchCakeVaultFees, fetchPoolsPublicDataAsync } from 'state/pools'
-import { useCakeVault, useIfoPoolVault, usePools } from 'state/pools/hooks'
+import { usePools } from 'state/pools/hooks'
 import { getAprData } from 'views/Pools/helpers'
 import { FetchStatus } from 'config/constants/types'
 
@@ -14,14 +14,10 @@ export function usePoolsWithVault() {
   // const ifoPool = useIfoPoolVault()
   const pools = useMemo(() => {
     const activePools = poolsWithoutAutoVault.filter((pool) => !pool.isFinished)
-    // const cakePool = activePools.find((pool) => pool.sousId === 0)
+    const cakePool = activePools.find((pool) => pool.sousId === 0)
     // const cakeAutoVault = { ...cakePool, vaultKey: VaultKey.CakeVault }
     // const ifoPoolVault = { ...cakePool, vaultKey: VaultKey.IfoPool }
-    // const cakeAutoVaultWithApr = {
-    //   ...cakeAutoVault,
-    //   apr: getAprData(cakeAutoVault, cakeVault.fees.performanceFeeAsDecimal).apr,
-    //   rawApr: cakePool.apr,
-    // }
+    const rawApr = cakePool.apr
     // const ifoPoolWithApr = {
     //   ...ifoPoolVault,
     //   apr: getAprData(ifoPoolVault, ifoPool.fees.performanceFeeAsDecimal).apr,

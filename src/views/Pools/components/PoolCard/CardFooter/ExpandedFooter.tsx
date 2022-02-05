@@ -18,9 +18,8 @@ import {
 } from '@pancakeswap/uikit'
 import { BASE_BSC_SCAN_URL } from 'config'
 import { useCurrentBlock } from 'state/block/hooks'
-import { useVaultPoolByKey, useVaultPools } from 'state/pools/hooks'
 import { DeserializedPool } from 'state/types'
-import { getAddress, getVaultPoolAddress } from 'utils/addressHelpers'
+import { getAddress } from 'utils/addressHelpers'
 import { registerToken } from 'utils/wallet'
 import { getBscScanLink } from 'utils'
 import Balance from 'components/Balance'
@@ -53,8 +52,6 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({ pool, account }) => {
     contractAddress,
     sousId,
   } = pool
-
-
 
 
   const tokenAddress = earningToken.address || ''

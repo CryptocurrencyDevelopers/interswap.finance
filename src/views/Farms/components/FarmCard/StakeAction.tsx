@@ -140,9 +140,6 @@ const StakeAction: React.FC<FarmCardActionsProps> = ({
       displayApr={displayApr}
       addLiquidityUrl={addLiquidityUrl}
       cakePrice={cakePrice}
-      xscPrice={xscPrice}
-      crystalPrice={crystalPrice}
-      bnbBUSDPrice={bnbBUSDPrice}
     />,
   )
   const [onPresentWithdraw] = useModal(

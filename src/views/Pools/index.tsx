@@ -13,8 +13,8 @@ import {
   useFetchPublicPoolsData,
   usePools,
   useFetchUserPools,
-  useFetchCakeVault,
-  useFetchIfoPool,
+  // useFetchCakeVault,
+  // useFetchIfoPool,
   // useVaultPools,
 } from 'state/pools/hooks'
 import { latinise } from 'utils/latinise'
@@ -31,12 +31,10 @@ import { BIG_ZERO } from 'utils/bigNumber'
 import { useRouter } from 'next/router'
 import Loading from 'components/Loading'
 import PoolCard from './components/PoolCard'
-import CakeVaultCard from './components/CakeVaultCard'
 import PoolTabButtons from './components/PoolTabButtons'
 import BountyCard from './components/BountyCard'
 import HelpButton from './components/HelpButton'
 import PoolsTable from './components/PoolsTable/PoolsTable'
-import { getCakeVaultEarnings } from './helpers'
 
 const CardLayout = styled(FlexLayout)`
   justify-content: center;
@@ -129,8 +127,8 @@ const Pools: React.FC = () => {
   )
   const hasStakeInFinishedPools = stakedOnlyFinishedPools.length > 0
 
-  useFetchCakeVault()
-  useFetchIfoPool(false)
+  // useFetchCakeVault()
+  // useFetchIfoPool(false)
   useFetchPublicPoolsData()
   useFetchUserPools(account)
 

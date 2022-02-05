@@ -56,15 +56,6 @@ const BountyModal: React.FC<BountyModalProps> = ({ onDismiss, TooltipComponent }
   // const estimatedCakeBountyReward = 100;
   // const totalYieldToDisplay = getBalanceNumber(1000000000, 18)
 
-  // const estimatedDollarBountyReward = useMemo(() => {
-  //   return new BigNumber(estimatedCakeBountyReward).multipliedBy(cakePriceBusd)
-  // }, [cakePriceBusd, estimatedCakeBountyReward])
-
-  // const hasFetchedDollarBounty = false
-  // const hasFetchedCakeBounty = false
-  // const dollarBountyToDisplay = hasFetchedDollarBounty ? getBalanceNumber(estimatedDollarBountyReward, 18) : 0
-  // const cakeBountyToDisplay = hasFetchedCakeBounty ? getBalanceNumber(estimatedCakeBountyReward, 18) : 0
-
   const { targetRef, tooltip, tooltipVisible } = useTooltip(<TooltipComponent />, {
     placement: 'bottom',
     tooltipPadding: { right: 15 },
@@ -80,7 +71,7 @@ const BountyModal: React.FC<BountyModalProps> = ({ onDismiss, TooltipComponent }
         toastSuccess(
           t('Bounty collected!'),
           <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-            {t('CAKE bounty has been sent to your wallet.')}
+            {t('bounty has been sent to your wallet.')}
           </ToastDescriptionWithTx>,
         )
         setPendingTx(false)
@@ -102,12 +93,12 @@ const BountyModal: React.FC<BountyModalProps> = ({ onDismiss, TooltipComponent }
       <Flex alignItems="flex-start" justifyContent="space-between">
         <Text>{t('You’ll claim')}</Text>
         <Flex flexDirection="column">
-          <Balance bold value={cakeBountyToDisplay} decimals={7} unit=" CAKE" />
+          <Balance bold value={0} decimals={7} unit=" XSC" />
           <Text fontSize="12px" color="textSubtle">
             <Balance
               fontSize="12px"
               color="textSubtle"
-              value={dollarBountyToDisplay}
+              value={0}
               decimals={2}
               unit=" USD"
               prefix="~"
