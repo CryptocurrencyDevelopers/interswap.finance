@@ -261,21 +261,16 @@ const Header: React.FC = () => {
       text: 'Swap',
       id: 'swap-page-link',
     },
-    {
-      link: '/pools',
-      text: 'Pool',
-      id: 'pools-page-link',
-    },
-    {
-      link: '/farm',
-      text: 'Farm',
-      id: 'farm-page-link',
-    },
-    {
-      link: '/dragons',
-      text: 'Dragon’s Lair',
-      id: 'dragons-page-link',
-    },
+    // {
+    //   link: '/farm',
+    //   text: 'Farm',
+    //   id: 'farm-page-link',
+    // },
+    // {
+    //   link: '/dragons',
+    //   text: 'Dragon’s Lair',
+    //   id: 'dragons-page-link',
+    // },
     {
       link: '/analytics',
       text: 'Analytics',

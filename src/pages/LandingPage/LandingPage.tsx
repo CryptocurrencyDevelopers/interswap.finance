@@ -22,6 +22,8 @@ import FeaturedSwap from 'assets/images/featured/Swap.svg';
 import FiatMask from 'assets/images/FiatMask.svg';
 import { ReactComponent as CoingeckoIcon } from 'assets/images/social/Coingecko.svg';
 import { ReactComponent as DiscordIcon } from 'assets/images/social/Discord.svg';
+import { ReactComponent as InstagramIcon } from 'assets/images/social/Instagram.svg';
+import { ReactComponent as FacebookIcon } from 'assets/images/social/Facebook.svg';
 import { ReactComponent as MediumIcon } from 'assets/images/social/Medium.svg';
 import { ReactComponent as RedditIcon } from 'assets/images/social/Reddit.svg';
 import { ReactComponent as TelegramIcon } from 'assets/images/social/Telegram.svg';
@@ -446,18 +448,6 @@ const LandingPage: React.FC = () => {
       desc: 'Earn 0.25% fee on trades proportional to your share of the pool.',
     },
     {
-      img: Rewards,
-      title: 'Earn $QUICK',
-      desc:
-        'Deposit your LP Tokens to earn additional rewards in $QUICK Token.',
-    },
-    {
-      img: DragonsLair,
-      title: 'Dragon’s Lair',
-      desc:
-        'Dragon’s lair is a single staking pool for QUICK token. Stake your QUICK to recieve dQuick, and earn your share of .04%',
-    },
-    {
       img: BuyWithFiat,
       title: 'Buy Crypto with Fiat',
       desc:
@@ -472,39 +462,29 @@ const LandingPage: React.FC = () => {
 
   const socialicons = [
     {
-      link: 'https://www.reddit.com/r/QuickSwap/',
+      link: 'https://www.reddit.com/r/intergalacticracing/',
       icon: <RedditIcon />,
       title: 'Reddit',
     },
     {
-      link: 'https://discord.com/invite/XJTM7FV88Y',
-      icon: <DiscordIcon />,
-      title: 'Discord',
+      link: 'https://www.instagram.com/intergalactic.racing/',
+      icon: <InstagramIcon />,
+      title: 'Instagram',
     },
     {
-      link: 'https://twitter.com/QuickswapDEX',
-      icon: <TwitterIcon />,
-      title: 'Twitter',
-    },
-    {
-      link: 'https://quickswap-layer2.medium.com/',
+      link: 'https://medium.com/@igc/list/intergalactic-racing-19e94cbfc30b',
       icon: <MediumIcon />,
       title: 'Medium',
     },
     {
-      link: 'https://www.youtube.com/channel/UCrPlF-DBwD-UzLFDzJ4Z5Fw',
+      link: 'https://www.youtube.com/channel/UCzvgg-g7ZIdX7NILVHOSR6g',
       icon: <YouTubeIcon />,
       title: 'Youtube',
     },
     {
-      link: 'https://t.me/QuickSwapDEX',
+      link: 'https://t.me/intergalactic_racing',
       icon: <TelegramIcon />,
       title: 'Telegram',
-    },
-    {
-      link: 'https://www.coingecko.com/en/exchanges/quickswap',
-      icon: <CoingeckoIcon />,
-      title: 'CoinGecko',
     },
   ];
 
@@ -594,120 +574,6 @@ const LandingPage: React.FC = () => {
           </Button>
         </Box>
       </Box>
-      <Box className={classes.tradingInfo} display='flex'>
-        <Box>
-          {globalData ? (
-            <Typography variant='h3'>
-              {Number(globalData.oneDayTxns).toLocaleString()}
-            </Typography>
-          ) : (
-            <Skeleton variant='rect' width={100} height={45} />
-          )}
-          <Typography
-            style={{
-              fontSize: '12px',
-              color: palette.text.secondary,
-              paddingTop: '15px',
-            }}
-          >
-            24H TRANSACTIONS
-          </Typography>
-        </Box>
-        <Box>
-          {globalData ? (
-            <Box display='flex' flexDirection='row'>
-              <Typography variant='h6' style={{ paddingTop: '2px' }}>
-                $
-              </Typography>
-              <Typography variant='h3'>
-                {formatCompact(globalData.oneDayVolumeUSD)}
-              </Typography>
-            </Box>
-          ) : (
-            <Skeleton variant='rect' width={100} height={45} />
-          )}
-          <Typography
-            style={{
-              fontSize: '12px',
-              color: palette.text.secondary,
-              paddingTop: '15px',
-            }}
-          >
-            24H TRADING VOLUME
-          </Typography>
-        </Box>
-        <Box>
-          {totalRewardsUSD ? (
-            <Box display='flex' flexDirection='row'>
-              <Typography variant='h6' style={{ paddingTop: '2px' }}>
-                $
-              </Typography>
-              <Typography variant='h3'>
-                {totalRewardsUSD.toLocaleString()}
-              </Typography>
-            </Box>
-          ) : (
-            <Skeleton variant='rect' width={100} height={45} />
-          )}
-          <Typography
-            style={{
-              fontSize: '12px',
-              color: palette.text.secondary,
-              paddingTop: '15px',
-            }}
-          >
-            24h REWARDS DISTRIBUTED
-          </Typography>
-        </Box>
-        <Box>
-          {globalData ? (
-            <Typography variant='h3'>
-              {Number(globalData.pairCount).toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
-            </Typography>
-          ) : (
-            <Skeleton variant='rect' width={100} height={45} />
-          )}
-          <Typography
-            style={{
-              fontSize: '12px',
-              color: palette.text.secondary,
-              paddingTop: '15px',
-            }}
-          >
-            TOTAL TRADING PAIRS
-          </Typography>
-        </Box>
-        <Box>
-          {dQUICKAPY ? (
-            <Typography variant='h3' style={{ paddingTop: '20px' }}>
-              {dQUICKAPY.toLocaleString()}%
-            </Typography>
-          ) : (
-            <Skeleton variant='rect' width={100} height={45} />
-          )}
-          <Box
-            style={{
-              fontSize: '12px',
-              color: palette.text.secondary,
-              paddingTop: '15px',
-            }}
-          >
-            dQUICK APY
-          </Box>
-          <Typography
-            style={{
-              color: palette.primary.main,
-              fontSize: '12px',
-              cursor: 'pointer',
-            }}
-            onClick={() => setOpenStakeModal(true)}
-          >
-            stake {'>'}
-          </Typography>
-        </Box>
-      </Box>
       <Box className={classes.smallCommunityContainer}>
         {socialicons.map((val, ind) => (
           <a href={val.link} target='_blank' key={ind} rel='noreferrer'>
@@ -765,33 +631,6 @@ const LandingPage: React.FC = () => {
             </Typography>
           </Grid>
         </Grid>
-      </Box>
-      <Box className={classes.rewardsContainer}>
-        <Typography variant='h4'>
-          Earn additional rewards in $QUICK by
-        </Typography>
-        <Typography variant='h4'>depositing your LP Tokens</Typography>
-        <Typography variant='body2' style={{ marginTop: '20px' }}>
-          Deposit your Liquidity Provider tokens to receive Rewards
-        </Typography>
-        <Typography variant='body2'>in $QUICK on top of LP Fees.</Typography>
-        <RewardSlider />
-        <Box
-          bgcolor={palette.secondary.dark}
-          color={palette.text.primary}
-          width={194}
-          height={48}
-          display='flex'
-          alignItems='center'
-          justifyContent='center'
-          borderRadius={24}
-          style={{ cursor: 'pointer' }}
-          onClick={() => {
-            history.push('/farm');
-          }}
-        >
-          <Typography variant='body1'>See all pairs</Typography>
-        </Box>
       </Box>
       <Box className={classes.buyFiatContainer}>
         <img src={FiatMask} alt='Fiat Mask' />
