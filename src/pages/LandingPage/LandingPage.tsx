@@ -20,6 +20,7 @@ import ProvideLiquidity from 'assets/images/featured/ProvideLiquidity.svg';
 import Rewards from 'assets/images/featured/Rewards.svg';
 import FeaturedSwap from 'assets/images/featured/Swap.svg';
 import FiatMask from 'assets/images/FiatMask.svg';
+import { ReactComponent as QuickIcon } from 'assets/images/quickIcon.svg';
 import { ReactComponent as CoingeckoIcon } from 'assets/images/social/Coingecko.svg';
 import { ReactComponent as DiscordIcon } from 'assets/images/social/Discord.svg';
 import { ReactComponent as InstagramIcon } from 'assets/images/social/Instagram.svg';
@@ -462,32 +463,22 @@ const LandingPage: React.FC = () => {
 
   const socialicons = [
     {
-      link: 'https://www.facebook.com/intergalactic.racing',
-      icon: <FacebooksIcon />,
-      title: 'Facebook',
-    },
-    {
-      link: 'https://www.instagram.com/intergalactic.racing/',
-      icon: <InstagramIcon />,
-      title: 'Instagram',
-    },
-    {
       link: 'https://www.reddit.com/r/intergalacticracing/',
       icon: <RedditIcon />,
       title: 'Reddit',
     },
     {
-      link: 'https://medium.com/@igc/list/intergalactic-racing-19e94cbfc30b',
+      link: 'https://medium.com/@igc/list/intergalactic-racing-19e94cbfc30b/',
       icon: <MediumIcon />,
       title: 'Medium',
     },
     {
-      link: 'https://www.youtube.com/channel/UCzvgg-g7ZIdX7NILVHOSR6g',
+      link: 'https://www.youtube.com/channel/UCzvgg-g7ZIdX7NILVHOSR6g/',
       icon: <YouTubeIcon />,
       title: 'Youtube',
     },
     {
-      link: 'https://t.me/intergalactic_racing',
+      link: 'https://t.me/intergalactic_racing/',
       icon: <TelegramIcon />,
       title: 'Telegram',
     },
@@ -532,26 +523,13 @@ const LandingPage: React.FC = () => {
       )}
       <Box className={classes.heroSection}>
         <Typography variant='body2' style={{ fontWeight: 'bold' }}>
-          Total Value Locked
+          Play to Earn
         </Typography>
-        {globalData ? (
-          <Box display='flex' flexDirection='row' style={{ paddingTop: '5px' }}>
-            <Typography variant='h3' style={{ paddingTop: '9px' }}>
-              $
-            </Typography>
-            <Typography style={{ fontSize: '55px', fontWeight: 700 }}>
-              {Number(globalData.totalLiquidityUSD).toLocaleString(undefined, {
-                maximumFractionDigits: 0,
-              })}
-            </Typography>
-          </Box>
-        ) : (
-          <Box my={1}>
-            <Skeleton variant='rect' width={400} height={72} />
-          </Box>
-        )}
+        <Box my={1}>
+          <QuickIcon />
+        </Box>
         <Typography style={{ fontSize: '15px', color: palette.text.secondary }}>
-          Top Asset Exchange on the Polygon Network
+          DeFi & GameFi on the Polygon Network with QuickSwap for convenience
         </Typography>
         <Box mt={2} width={200} height={48}>
           <Button
