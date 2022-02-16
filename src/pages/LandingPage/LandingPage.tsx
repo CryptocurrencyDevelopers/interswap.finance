@@ -584,6 +584,8 @@ const LandingPage: React.FC = () => {
       <Box mt={2} width={1}>
         <TopMovers background={palette.background.paper} />
       </Box>
+      <br />
+      <br />
       <Box className={classes.featureContainer}>
         <Box className={classes.featureHeading}>
           <Typography variant='h3'>Gaming</Typography>
