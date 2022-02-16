@@ -24,7 +24,7 @@ import { ReactComponent as QuickIcon } from 'assets/images/quickIcon.svg';
 import { ReactComponent as CoingeckoIcon } from 'assets/images/social/Coingecko.svg';
 import { ReactComponent as DiscordIcon } from 'assets/images/social/Discord.svg';
 import { ReactComponent as InstagramIcon } from 'assets/images/social/Instagram.svg';
-import { ReactComponent as FacebooksIcon } from 'assets/images/social/Facebooks.svg';
+import { ReactComponent as FacebookIcon } from 'assets/images/social/Facebook.svg';
 import { ReactComponent as MediumIcon } from 'assets/images/social/Medium.svg';
 import { ReactComponent as RedditIcon } from 'assets/images/social/Reddit.svg';
 import { ReactComponent as TelegramIcon } from 'assets/images/social/Telegram.svg';
@@ -466,6 +466,16 @@ const LandingPage: React.FC = () => {
       link: 'https://www.reddit.com/r/intergalacticracing/',
       icon: <RedditIcon />,
       title: 'Reddit',
+    },
+    {
+      link: 'https://www.facebook.com/intergalactic.racing/',
+      icon: <FacebookIcon />,
+      title: 'Facebook',
+    },
+    {
+      link: 'https://www.instagram.com/intergalactic.racing/',
+      icon: <InstagramIcon />,
+      title: 'Instagram',
     },
     {
       link: 'https://medium.com/@igc/list/intergalactic-racing-19e94cbfc30b/',
