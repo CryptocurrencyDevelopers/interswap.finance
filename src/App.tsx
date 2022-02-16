@@ -122,21 +122,6 @@ const App: React.FC = () => {
                         <SwapPage />
                       </PageLayout>
                     </Route>
-                    <Route exact path='/pools'>
-                      <PageLayout>
-                        <PoolsPage />
-                      </PageLayout>
-                    </Route>
-                    <Route exact path='/farm'>
-                      <PageLayout>
-                        <FarmPage />
-                      </PageLayout>
-                    </Route>
-                    <Route exact path='/dragons'>
-                      <PageLayout>
-                        <DragonPage />
-                      </PageLayout>
-                    </Route>
                     <Route exact path='/analytics'>
                       <PageLayout>
                         <AnalyticsHeader />
