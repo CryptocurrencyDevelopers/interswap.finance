@@ -6,6 +6,11 @@
       }
     }
   },
+  "parser": "babel-eslint",
+  "parserOptions": {
+      "sourceType": "module",
+      "allowImportExportEverywhere": true
+  },
   "env": {
     "es6": true,
     "browser": true,

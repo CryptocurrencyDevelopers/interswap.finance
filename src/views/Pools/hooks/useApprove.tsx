@@ -9,7 +9,6 @@ import { useCake, useSousChef, useVaultPoolContract } from 'hooks/useContract'
 import useToast from 'hooks/useToast'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { ToastDescriptionWithTx } from 'components/Toast'
-import { VaultKey } from 'state/types'
 import { logError } from 'utils/sentry'
 import { useSWRContract, UseSWRContractKey } from 'hooks/useSWRContract'
 
@@ -64,11 +63,11 @@ export const useApprovePool = (lpContract: Contract, sousId, earningTokenSymbol)
 }
 
 // Approve CAKE auto pool
-export const useVaultApprove = (vaultKey: VaultKey, setLastUpdated: () => void) => {
+export const useVaultApprove = (setLastUpdated: () => void) => {
   const [requestedApproval, setRequestedApproval] = useState(false)
   const { t } = useTranslation()
   const { toastSuccess, toastError } = useToast()
-  const vaultPoolContract = useVaultPoolContract(vaultKey)
+  const vaultPoolContract = useVaultPoolContract()
   const { callWithGasPrice } = useCallWithGasPrice()
   const cakeContract = useCake()
 
@@ -95,10 +94,10 @@ export const useVaultApprove = (vaultKey: VaultKey, setLastUpdated: () => void) 
   return { handleApprove, requestedApproval }
 }
 
-export const useCheckVaultApprovalStatus = (vaultKey: VaultKey) => {
+export const useCheckVaultApprovalStatus = () => {
   const { account } = useWeb3React()
   const cakeContract = useCake()
-  const vaultPoolContract = useVaultPoolContract(vaultKey)
+  const vaultPoolContract = useVaultPoolContract()
 
   const key = useMemo<UseSWRContractKey>(
     () =>
