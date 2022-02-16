@@ -5,7 +5,6 @@ import { useTranslation } from 'contexts/Localization'
 import BigNumber from 'bignumber.js'
 import Balance from 'components/Balance'
 import { DeserializedPool } from 'state/types'
-import { useVaultPoolByKey } from 'state/pools/hooks'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { BIG_ZERO } from 'utils/bigNumber'
 import BaseCell, { CellContent } from './BaseCell'
@@ -20,13 +19,13 @@ const StyledCell = styled(BaseCell)`
 
 const TotalStakedCell: React.FC<TotalStakedCellProps> = ({ pool }) => {
   const { t } = useTranslation()
-  const { sousId, stakingToken, totalStaked, vaultKey } = pool
+  const { sousId, stakingToken, totalStaked} = pool
 
   const isManualCakePool = sousId === 0
 
   const totalStakedBalance = useMemo(() => {
     return getBalanceNumber(totalStaked, stakingToken.decimals)
-  }, [vaultKey, totalStaked, stakingToken.decimals])
+  }, [totalStaked, stakingToken.decimals])
 return (
   <StyledCell role="cell">
     <CellContent>

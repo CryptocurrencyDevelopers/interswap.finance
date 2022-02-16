@@ -32,7 +32,6 @@ const Apr: React.FC<AprProps> = ({ pool, showIcon, stakedBalance, performanceFee
     userData,
     apr,
     rawApr,
-    vaultKey,
   } = pool
   const { t } = useTranslation()
 
@@ -45,7 +44,7 @@ const Apr: React.FC<AprProps> = ({ pool, showIcon, stakedBalance, performanceFee
       earningTokenPrice={earningTokenPrice}
       stakingTokenPrice={stakingTokenPrice}
       stakingTokenBalance={stakedBalance.plus(stakingTokenBalance)}
-      apr={vaultKey ? rawApr : apr}
+      apr={apr}
       stakingTokenSymbol={stakingToken.symbol}
       linkLabel={t('Get %symbol%', { symbol: stakingToken.symbol })}
       linkHref={apyModalLink}

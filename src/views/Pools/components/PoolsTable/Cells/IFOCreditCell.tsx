@@ -1,10 +1,9 @@
 import { Box, Flex, HelpIcon, Skeleton, Text, useMatchBreakpoints, useTooltip } from '@pancakeswap/uikit'
 import Balance from 'components/Balance'
 import { useTranslation } from 'contexts/Localization'
+import BigNumber from 'bignumber.js'
 import { useBUSDCakeAmount } from 'hooks/useBUSDPrice'
 import React from 'react'
-import { VaultKey } from 'state/types'
-import { useIfoPoolCredit, useVaultPoolByKey } from 'state/pools/hooks'
 import styled from 'styled-components'
 import { getBalanceNumber } from 'utils/formatBalance'
 import BaseCell, { CellContent } from './BaseCell'
@@ -30,14 +29,11 @@ const HelpIconWrapper = styled.div`
 const IFOCreditCell: React.FC<IFOCreditCellProps> = ({ account }) => {
   const { t } = useTranslation()
   const { isMobile } = useMatchBreakpoints()
-  const {
-    userData: { isLoading: userDataLoading },
-  } = useVaultPoolByKey(VaultKey.IfoPool)
-  const credit = useIfoPoolCredit()
 
-  const hasCredit = credit.gt(0)
 
-  const cakeAsNumberBalance = getBalanceNumber(credit)
+  const hasCredit = false
+
+  const cakeAsNumberBalance = getBalanceNumber(new BigNumber(0))
   const avgBalanceDollarValue = useBUSDCakeAmount(cakeAsNumberBalance)
 
   const labelText = t('IFO Credit')
@@ -64,10 +60,7 @@ const IFOCreditCell: React.FC<IFOCreditCellProps> = ({ account }) => {
         <Text fontSize="12px" color="textSubtle" textAlign="left">
           {labelText}
         </Text>
-        {userDataLoading && account ? (
-          <Skeleton width="80px" height="16px" />
-        ) : (
-          <>
+        <>
             {tooltipVisible && tooltip}
             <Flex>
               <Box mr="8px" height="32px">
@@ -102,7 +95,6 @@ const IFOCreditCell: React.FC<IFOCreditCellProps> = ({ account }) => {
               )}
             </Flex>
           </>
-        )}
       </CellContent>
     </StyledCell>
   )

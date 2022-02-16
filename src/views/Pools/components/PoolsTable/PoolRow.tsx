@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useMatchBreakpoints } from '@pancakeswap/uikit'
-import { DeserializedPool, VaultKey } from 'state/types'
+import { DeserializedPool } from 'state/types'
 import useDelayedUnmount from 'hooks/useDelayedUnmount'
 import NameCell from './Cells/NameCell'
 import EarningsCell from './Cells/EarningsCell'
-import IFOCreditCell from './Cells/IFOCreditCell'
 import AprCell from './Cells/AprCell'
 import TotalStakedCell from './Cells/TotalStakedCell'
 import EndsInCell from './Cells/EndsInCell'
@@ -44,18 +43,12 @@ const PoolRow: React.FC<PoolRowProps> = ({ pool, account, userDataLoaded }) => {
     <>
       <StyledRow role="row" onClick={toggleExpanded}>
         <NameCell pool={pool} />
-        {pool.vaultKey ? (
-          ((isXLargerScreen && pool.vaultKey === VaultKey.IfoPool) || pool.vaultKey === VaultKey.CakeVault) && (
-            <AutoEarningsCell pool={pool} account={account} />
-          )
-        ) : (
-          <EarningsCell pool={pool} account={account} userDataLoaded={userDataLoaded} />
-        )}
+        <EarningsCell pool={pool} account={account} userDataLoaded={userDataLoaded} />
         {isXLargerScreen && isCakePool ? (
           <StakedCell pool={pool} account={account} userDataLoaded={userDataLoaded} />
         ) : null}
         {isLargerScreen && !isCakePool && <TotalStakedCell pool={pool} />}
-        {pool.vaultKey ? <AutoAprCell pool={pool} /> : <AprCell pool={pool} />}
+        {<AprCell pool={pool} />}
         {isLargerScreen && isCakePool && <TotalStakedCell pool={pool} />}
         {isDesktop && !isCakePool && <EndsInCell pool={pool} />}
         <ExpandActionCell expanded={expanded} isFullLayout={isTablet || isDesktop} />
